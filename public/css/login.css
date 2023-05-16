@@ -1,0 +1,112 @@
+/* @import url(./fonts.css); */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+}
+a{
+    text-decoration: none;
+}
+
+main{
+    width:100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.login-image{
+    width: 50%;
+    height: 100%;
+    background-image: url(/public/img/loginImg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.overlay{
+    background-color: #E2B88766;
+    height: 100%;
+    width:100%
+}
+
+.login-container{ 
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.loginForm{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width:75%;
+    height: 60vh;
+    text-align: center;
+}
+.login-title{
+    color: #00302E;
+    font-size: 37px;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+}
+input{
+    display: block;
+    width:80%;
+    height: 50px;
+    margin: 0 auto;
+    padding: 15px;
+    outline: none;
+    border:1px solid #FBDDBB82;
+    border-radius: 5px;
+}
+input[type='button']{
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #00302E;
+    border:none;
+    color:#FBDDBB ;
+    cursor: pointer;
+}
+.links{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.links a{
+    font-size: 13px;
+    color: rgba(0, 48, 46, 0.91);
+}
+.login-container #home{
+    color: #E2B887;
+    font-size: 20px;
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    font-family: 'Bona Nova', serif;
+    font-weight: 600;
+}
+
+/* RESPONSIVE FOR MOBILE */
+@media screen and (max-width:950px) {
+    .login-image{
+        display: none;
+    }
+    .login-container{
+        width:100%;
+    }
+    .loginForm{
+        width: 100%;
+        height: 50vh;
+    }
+}
+
+/* RESPONSIVE FOR TABLET */
