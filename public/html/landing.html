@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oya Chop: Landing Page</title>
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/117feff65f.js" crossorigin="anonymous"></script>
+  <!-- google fonts -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+  <!-- CSS stylesheet -->
+  <link rel="stylesheet" href="/public/css/landing.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo-wrap">
+        <h1 class="logo">Oya Chop</h1>
+      </div>
+      <div class="menu-wrap">
+        <ul class="menu-list" id="menuList">
+          <li class="menu-items" ><a href="#" class="link" id="home">Home</a></li>
+          <li class="menu-items" ><a href="#" class="link" id="login">Login</a></li>
+          <li class="menu-items" id="signupbtn"><a href="#" class="link" id="signup">Sign Up</a></li>
+        </ul>
+      </div> 
+      <div class="menu-icon" onclick="togglemenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <div class="container-1">
+        <div class="row-1">
+          <div class="col-1">
+            <h1>Order <span>food</span> anytime, <br> anywhere.</h1>
+            <p class="paragraph">Browse from our list of specials to place your order and have food delivered to you in no time. Affordable, tasty and fast!</p>
+            <div class="app-link">
+              <Button>
+                <small>GET IT ON</small>
+                <p><img src="/public/img/landingpage/playstore.jpg" alt="playstore logo" id="icon-logo"><a href="#">Google Play</a></p>
+              </Button>
+              <Button>
+                <small>Download on the</small>
+                <p><img src="/public/img/landingpage/logo_apple.jpg" alt="apple logo" id="icon-logo"><a href="#">App Store</a></p>
+              </Button>
+              
+            </div>
+          </div>
+          <div class="col-1">
+            <img id="homeImg" src="/public/img/foodItems/egusi soup with pounded yam.jpg" alt="img1">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container-2">
+        <div class="heading">
+          <h2>Special Meals of the day!</h2>
+          <p class="heading-text">Check our sepecials of the day and get discounts on all our meals and swift delivery to what ever location within Lagos.</p>
+        </div>
+        <div class="row-2">
+          <div class="col-2">
+            <img class="display-img" src="/public/img/foodItems/edikang ikong soup.jpg">
+            <h3>Edikang Ikong Soup</h3>
+            <p>Stir, fry and enjoy <br> it's the season.</p>
+          </div>
+          <div class="col-2">
+            <img class="display-img" src="/public/img/foodItems/porriage.jpg">
+            <h3>Porriage</h3>
+            <p>Delicious and nutritious, <br> you will come back for more.</p>
+          </div>
+          <div class="col-2">
+            <img class="display-img" src="/public/img/foodItems/vegetable salad.jpg">
+            <h3>Vegetable Salad</h3>
+            <p>Satisfy your cravings and <br> never forget.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- <div class="col-lg-6 text-center text-lg start">
+    
+  </div> -->
+  
+
+  <script src="/public/js/landing.js"></script>
+
+</body>
+</html>
