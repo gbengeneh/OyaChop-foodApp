@@ -185,6 +185,32 @@ nav{
   border-radius: 50%;
 }
 /* /////////////////////////////////////////////////////////////////////////////////// */
+.row-3{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5% 10%;
+}
+.aboutus img{
+  object-fit: cover;
+}
+.col-3{
+  flex-basis: 50%;
+}
+.aboutus h1{
+  font-family: 'Dancing Script', cursive;
+  color: var(--cream);
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+.aboutus p{
+  font-family: 'Bona Nova', serif;
+  color: #FFFFFF;
+  font-size: 18px;
+  max-width: 70%;
+  line-height: 1.6;
+}
+/* /////////////////////////////////////////////////////////////////////////////////// */
 .row-4{
   display: flex;
   align-items: center;
@@ -371,6 +397,29 @@ footer{
     height: 200px;
     border-radius: 50%;
   }
+           /* ///////////////////////////////////////////////////////////////////////////////   */
+
+
+  .row-3{
+    display: block;
+    margin: 5% 10%;
+  }
+  .aboutus img{
+    width: 100%;
+    margin: auto;
+    padding-bottom: 30px;
+  }
+  .col-3{
+    flex-basis: 100%;
+  }
+  .aboutus h1{
+    font-size: 40px;
+  }
+  .aboutus p{
+    font-size: 15px;
+    max-width: 90%;
+  }
+
            /* ///////////////////////////////////////////////////////////////////////////////   */
 
   .row-4{
