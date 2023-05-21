@@ -7,6 +7,7 @@ font-family: 'Poppins', sans-serif; */
   border: 0;
   box-sizing: border-box;
   text-decoration: none;
+  list-style-type: none;
 }
 
 :root{
@@ -16,8 +17,17 @@ font-family: 'Poppins', sans-serif; */
   --footer: #0B0D17;
 }
 body{
-  margin: auto 5%;
+  width: 100%;
+}
+main{
+  max-width: 100%;
+  padding-left:5%;
+  padding-right:5%;
   background: var(--background);
+}
+section{
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 nav{
@@ -25,6 +35,12 @@ nav{
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
+  position: fixed;
+  background: #00302E;
+  width: 100%;
+  padding-left:5%;
+  padding-right:5%;
+  z-index: 1;
 }
 .logo{
   color: var(--white);
@@ -38,7 +54,7 @@ nav{
 
 }
 .menu-wrap{
-  flex: 1;
+  /* flex: 1; */
   text-align: right;
 }
 .link{
@@ -78,7 +94,7 @@ nav{
 .container-1{
   margin: 5% auto;
   font-family: 'Bona Nova', serif;
-  position: relative;
+  padding-top: 7%;
 }
 .row-1{
   display: flex;
@@ -168,8 +184,141 @@ nav{
   height: 200px;
   border-radius: 50%;
 }
+/* /////////////////////////////////////////////////////////////////////////////////// */
+.row-3{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5% 10%;
+}
+.aboutus img{
+  object-fit: cover;
+}
+.col-3{
+  flex-basis: 50%;
+}
+.aboutus h1{
+  font-family: 'Dancing Script', cursive;
+  color: var(--cream);
+  font-size: 50px;
+  padding-bottom: 20px;
+}
+.aboutus p{
+  font-family: 'Bona Nova', serif;
+  color: #FFFFFF;
+  font-size: 18px;
+  max-width: 70%;
+  line-height: 1.6;
+}
+/* /////////////////////////////////////////////////////////////////////////////////// */
+.row-4{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10% 10%;
+}
+/* .col-4{
+  
+} */
+.notification{
+  max-width: 60%;
+  font-family: 'Poppins', sans-serif;
+}
+.notification h2{
+ color: var(--cream);
+ padding-bottom: 17px;
+}
+.notification p{
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.subcription{
+  font-family: 'Bona Nova', serif;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.subcription input{
+  border: 0;
+  outline: none;
+  height: 35px;
+  width: 200px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+.subcription button{
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  height: 35px;
+  width: 100px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #0B0D17;
+  background: #E2B887;
+}
+/* /////////////////////////////////////////////////////////////////////////////////// */
 
+footer{
+  background: var(--footer);
+  padding-top: 7%;
+  padding-bottom: 10%;
+}
+.foot-wrap{
+  display: flex;
+  vertical-align: top;
+  justify-content: space-evenly;
+}
+.foothead{
+  font-size: 14px;
+  color: #FFFFFF;
+  padding-bottom: 12px;
+}
+.footitem{
+  padding-bottom: 7px;
+}
+.footlink{
+  font-size: 14px;
+  color: gray;
+}
+.footlist #app-head{
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.footer-applink{
+  padding-top: 20px;
+}
+
+.footer-applink button small{
+  font-size: 7px;
+}
+.footer-applink button p a{
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.footer-applink button{
+  color: var(--white);
+  background: #000000;
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+}
 @media(max-width:536px){
+  body{
+    width: 100%;
+  }
+  header, main{
+    padding-left:auto;
+    padding-right:auto;
+    background: var(--background);
+  }
+  nav{
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+  
   .menu-icon{
     display: block;
   }
@@ -207,10 +356,11 @@ nav{
   .container-1{
     margin: 10% auto;
     position: relative;
+    
   }
   .row-1{
     display: block;
-    
+    padding-top: 10%;
   }
   .col-1{
     padding-bottom: 20px;
@@ -246,5 +396,49 @@ nav{
     width: 50%;
     height: 200px;
     border-radius: 50%;
+  }
+           /* ///////////////////////////////////////////////////////////////////////////////   */
+
+
+  .row-3{
+    display: block;
+    margin: 5% 10%;
+  }
+  .aboutus img{
+    width: 100%;
+    margin: auto;
+    padding-bottom: 30px;
+  }
+  .col-3{
+    flex-basis: 100%;
+  }
+  .aboutus h1{
+    font-size: 40px;
+  }
+  .aboutus p{
+    font-size: 15px;
+    max-width: 90%;
+  }
+
+           /* ///////////////////////////////////////////////////////////////////////////////   */
+
+  .row-4{
+    display: block;
+    margin: 12% auto;
+  }
+  .notification{
+    max-width: 90%;
+    padding-bottom: 20px;
+  }
+           /* ///////////////////////////////////////////////////////////////////////////////   */
+  
+  .foot-wrap{
+    display: block;
+  }
+  .footlist{
+    padding-bottom: 20px;
+  }
+  .footer-applink, #app-head{
+    margin-left: 40px;
   }
 }
