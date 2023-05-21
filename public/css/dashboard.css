@@ -1,0 +1,146 @@
+@import url(./fonts.css);
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.body-content{
+    position: relative;
+    width:100%;
+    height: 100vh;
+    display: flex;
+}
+.sidebar-container{
+    height: 100%;
+    width: 20%;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.side-content{
+    /* background-color: yellow; */
+    width:90%;
+    height: 65%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;        align-items: center;
+    padding: 5rem 0 0 0;
+}
+.navbar{
+    height: 45%;
+    width:100%;
+    display: flex;
+    position: relative;
+}
+.nav-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap:1rem;
+    width: 100%;
+}
+.nav-menu li{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    gap:10px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.nav-menu li:hover{
+    background-color: #efefef;
+    border-radius: 12px;
+    
+}
+.nav-menu li a{
+    font-size: 14px;
+    color:#bcbcbc
+}
+
+/* MAIN CONTAINER */
+.main-container{
+    width:80%;
+    position: relative;
+}
+.main-content{
+    width:90%;
+    height:fit-content;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+.topbar-profile{
+    display: flex;
+    justify-content: space-between;
+}
+.greeting p{
+    font-size: 13px;
+}
+.user{
+    width:50px;
+    height: 50px;
+    border:1px solid #000;
+    border-radius: 50px;
+}
+.item{
+    width:250px;
+    height: fit-content;
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem 2rem 1rem;
+    border: 0.3px solid rgba(0, 48, 46, 0.14);
+    border-radius: 5px;
+}
+.item-img{
+    width:100px;
+    height: 100px;
+    position: relative;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+}
+.item-img img{
+    width:100px;
+    height: 100px;
+    border-radius: 50px;
+}
+.item-name{
+    width:90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap:7px;
+    margin-bottom: 15px;
+}
+
+.item-name p{
+    font-size: 13px;
+}
+.price-cart{
+    width: 90%;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price{
+    font-weight: 600;
+}
+.addtocart{
+    color:#06E775;
+    font-weight: 500;
+}
