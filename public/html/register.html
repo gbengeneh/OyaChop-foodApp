@@ -17,12 +17,28 @@
             <a href="landing.html" class="homelink" id="home">Home</a>
             <form class="registerForm">
                 <h3 class="register-title">Welcome to <span>OyaChop!</span></h3>
+
                 <label for="first-name"></label>
-                <input type="text" name="first-name" id="first-name" placeholder="Your First Name">
+                <input class="input-box" type="text" name="first-name" id="first-name" placeholder="Your First Name" required>
+
+                <label for="last-name"></label>
+                <input class="input-box" type="text" name="last-name" id="last-name" placeholder="Your Last Name" required>
+
                 <label for="email"></label>
-                <input type="email" name="email" id="email" placeholder="Your Email address">
+                <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" required>
+
+                <label id="gender" for="gender">Gender:</label>
+                <input type="radio" name="gender" value="male" id="gender" checked required>Male
+                <input type="radio" name="gender" value="female" id="gender" required>Female
+
+                <label for="address"></label>
+                <input class="input-box" type="text" name="address" id="address" placeholder="Your Delivery address" required>
+
                 <label for="pass"></label>
-                <input type="password" name="password" id="password" placeholder="Your Password">
+                <input class="input-box" type="password" name="password" id="password" placeholder="Your Password" required>
+
+                <label id="profileImage" for="profileImg">Profile Image:</label>
+                <input class="input-box" type="file" name="profileImg" id="profileImg" required>
     
                 <input type="button" value="SIGN UP">
     
