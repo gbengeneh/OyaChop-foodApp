@@ -28,8 +28,15 @@
                 <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" required>
 
                 <label id="gender" for="gender">Gender:</label>
-                <input type="radio" name="gender" value="male" id="gender" checked required>Male
-                <input type="radio" name="gender" value="female" id="gender" required>Female
+                <!-- <input type="radio" name="gender" value="male" id="gender" checked required>Male
+                <input type="radio" name="gender" value="female" id="gender" required>Female -->
+                <div class="custom-select">
+                    <select class="input-box">
+                        <option value="" checked>Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
 
                 <label for="address"></label>
                 <input class="input-box" type="text" name="address" id="address" placeholder="Your Delivery address" required>
