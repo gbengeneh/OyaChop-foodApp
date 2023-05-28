@@ -1,13 +1,13 @@
 <?php
-
+require "cors.php";
 require "db_con.php";
 
-if($_SERVER['REQUEST_METHOD' === 'POST']){
+
 
 if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['phone_number'] 
-, $_POST['email'], $_POST['delivery_address'], $_POST['password'] ))
+, $_POST['email'], $_POST['delivery_address'], $_POST['password'], $_FILES['picture']))
  {
-    $response = json_encode(['status' => 'error','code'=>'400', 'message' => 'Missing required fields']);
+    $response = json_encode(['status' => 'error','code'=>'400', 'message' => 'Missing Required Fields']);
     echo $response;
     exit;
   }
@@ -21,10 +21,12 @@ if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['ph
     $delivery_address = filter_var($_POST['delivery_address'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // Handle file uploads
-    $picture = $_FILES['picture'];
+    
   
     // Validate file types and sizes, and move uploaded files to a permanent location
-   
+if(isset($_FILES['picture'])){
+
+    $picture = $_FILES['picture'];
     $allowed_picture_types = array('image/jpeg', 'image/png', 'image/jpg');
     $max_file_size = 1000000; //  MB
  
@@ -34,12 +36,13 @@ if(in_array($picture['type'], $allowed_picture_types) && $picture['size'] <= $ma
     $picture_file_path = 'images/' . $picture_file_name;
     move_uploaded_file($picture['tmp_name'], $picture_file_path);
 
-} else {
+}else {
 
     $response = json_encode(['status' => 'error','code'=>'420', 'message' => 'Invalid image, or image is > 3MB']);
     echo $response;
     exit;
 
+}
 }
    $enc_password = md5($password);
 
@@ -50,24 +53,18 @@ if(in_array($picture['type'], $allowed_picture_types) && $picture['size'] <= $ma
 
 if($result){
 
-    $response = json_encode(['status'=>'success', 'code' => '200','message'=> 'Blog Post Created']);
+    $response = json_encode(['status'=>'success', 'code' => '200','message'=> 'Signup Successful']);
     echo $response;
     return;
         
 }else{
         
-    $response = json_encode(['status'=>'error', 'code' => '440', 'message'=> 'Could not create blog']);
+    $response = json_encode(['status'=>'error', 'code' => '440', 'message'=> 'Error Occured, Please Try Again!']);
     echo $response;
     return;
 
 }
 
-}else{
-
-    $response = json_encode(['status'=>'error','code'=>'402','message'=>'Invalid Request Type.']);
-    echo $response;
-   
-   }
       
 $db_con->close();
 
