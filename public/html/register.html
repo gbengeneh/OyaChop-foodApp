@@ -4,56 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../alertifyjs/css/alertify.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
     <title>Oya Chop: Register</title>
-    <link rel="stylesheet" href="/public/css/register.css">
+    <link rel="stylesheet" href="../css/register ">
+    <style>
+.alertify-notifier {
+  top: 10px;
+  right: 10px;
+}
+.alertify-notifier .ajs-success {
+	font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+}
+.alertify-notifier .ajs-error {
+font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+}
+    </style>
 </head>
 <body>
     <main>
         <section class="register-image">
             <div class="overlay"></div>
         </section>
+        <form class="registerForm" id="myForm">
         <section class="register-container">
             <a href="landing.html" class="homelink" id="home">Home</a>
-            <form class="registerForm">
+           
                 <h3 class="register-title">Welcome to <span>OyaChop!</span></h3>
 
                 <label for="first-name"></label>
-                <input class="input-box" type="text" name="first-name" id="first-name" placeholder="Your First Name" required>
+                <input class="input-box" type="text" name="firstname" id="firstname" placeholder="Your First Name" >
 
                 <label for="last-name"></label>
-                <input class="input-box" type="text" name="last-name" id="last-name" placeholder="Your Last Name" required>
+                <input class="input-box" type="text" name="lastname" id="lastname" placeholder="Your Last Name" >
 
                 <label for="email"></label>
-                <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" required>
+                <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" >
 
                 <label id="gender" for="gender">Gender:</label>
                 <!-- <input type="radio" name="gender" value="male" id="gender" checked required>Male
                 <input type="radio" name="gender" value="female" id="gender" required>Female -->
                 <div class="custom-select">
-                    <select class="input-box">
-                        <option value="" checked>Select</option>
+                    <select id="gender" class="input-box">
+                        <option value="" checked>--Select--</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
                 </div>
 
                 <label for="address"></label>
-                <input class="input-box" type="text" name="address" id="address" placeholder="Your Delivery address" required>
+                <input class="input-box" type="text" name="phone_number" id="phone_number" placeholder="Your phone number" >
+
+                <label for="address"></label>
+                <input class="input-box" type="text" name="delivery_address" id="delivery_address" placeholder="Your Delivery address" >
 
                 <label for="pass"></label>
-                <input class="input-box" type="password" name="password" id="password" placeholder="Your Password" required>
+                <input class="input-box" type="password" name="password" id="password" placeholder="Your Password" >
 
                 <label id="profileImage" for="profileImg">Profile Image:</label>
-                <input class="input-box" type="file" name="profileImg" id="profileImg" required>
+                <input class="input-box" type="file" name="picture" id="picture" >
     
-                <input type="button" value="SIGN UP">
+                <button type="submit" name="submit"  id="sub-btn" > SIGN UP </button>
     
                 <div class="links">
                     <a href="login.html">Already have an account. <span>LOGIN</span></a>
                 </div>
-            </form>
+           
         </section>
+    </form>
     </main>
+    <script>
+        const form = document.querySelector('#myForm');
+        
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+        
+          const formData = new FormData();
+          formData.append('firstname', form.elements.firstname.value);
+          formData.append('lastname', form.elements.lastname.value);
+          formData.append('email', form.elements.email.value);
+          formData.append('gender', form.elements.gender.value);
+          formData.append('phone_number', form.elements.phone_number.value);
+          formData.append('delivery_address', form.elements.delivery_address.value);
+          formData.append('password', form.elements.password.value);
+          const userPicture = form.elements.picture.files[0];
+          if (userPicture) {
+            formData.append('picture', userPicture);
+          }
+          fetch('http://localhost/api/signup.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(async (response) => {
+            const result = await response.json();
+            const err = result.status;
+            const msg = result.message;
+            if(err === 'error'){
+              alertify.error(msg);
+            }else{
+                alertify.success(msg);
+                document.getElementById('myForm').reset();
+            }
+        })
+            
+        });
+        
+        </script>
+    <script src="../alertifyjs/js/alertify.min.js"></script>
 </body>
 </html>

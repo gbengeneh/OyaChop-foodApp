@@ -1,11 +1,9 @@
 <?php
-
+require "cors.php";
 require 'db_con.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-
-if($_SERVER['REQUEST_METHOD' === 'POST']){
 
     if(!empty($data->email) && !empty($data->password)){
 
@@ -49,15 +47,6 @@ if($_SERVER['REQUEST_METHOD' === 'POST']){
         echo $response;
 
     }
-
-
-}else{
-
-    $response = json_encode(['status'=>'error','code'=>'402','message'=>'Invalid Request Type.']);
-   
-    echo $response;
-   
-   }
    
 $db_con->close();
 
