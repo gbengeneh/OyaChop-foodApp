@@ -25,10 +25,10 @@ const products = [
 
   {
     id: 3,
-    name: "Eba with Edikang Ikong Soup",
+    name: "White Rice with Beef",
     price: 1500.00,
     decription: "delicious and yummy",
-    imgSrc: ".public\img\foodItems\edikang ikong soup.jpg",
+    imgSrc: ".public\img\foodItems\rice and stew.jpg",
   },
 
   {
@@ -57,28 +57,26 @@ const products = [
 
   {
     id: 7,
-    name: "Amala and Ewedu",
+    name: "Jollof Rice with Chicken",
     price: 1500.00,
     decription: "delicious and yummy",
-    imgSrc: ".public\img\foodItems\amala and ewedu.jpg",
+    imgSrc: ".public\img\foodItems\jollof rice.jpg",
   },
 
   {
     id: 8,
-    name: "Amala and Ewedu",
+    name: "Ofada Rice with Beef",
     price: 1500.00,
     decription: "delicious and yummy",
-    imgSrc: ".public\img\foodItems\amala and ewedu.jpg",
+    imgSrc: ".public\img\foodItems\ofada rice.jpg",
   },
 
   {
     id: 9,
-    name: "Amala and Ewedu",
+    name: "Sweet Potatoes Chickpea",
     price: 1500.00,
     decription: "delicious and yummy",
-    imgSrc: ".public\img\foodItems\amala and ewedu.jpg",
+    imgSrc: ".public\img\foodItems\rice and stew.jpg",
   },
-
-  
 
 ]

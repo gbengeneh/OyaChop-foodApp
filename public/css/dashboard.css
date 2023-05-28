@@ -166,3 +166,18 @@ a{
     font-weight: 500;
     cursor: pointer;
 }
+
+/* DashBoard Menu */
+.bar{
+    display: block;
+    width: 35px;
+    height: 3px;
+    margin: 7px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #FFFFFF;
+  }
+
+@media(max-width:536px){
+
+}

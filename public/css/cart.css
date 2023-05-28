@@ -303,3 +303,7 @@ button{
   cursor: pointer;
   border-radius: 7px;
 }
+
+@media(max-width:536px){
+    
+}
