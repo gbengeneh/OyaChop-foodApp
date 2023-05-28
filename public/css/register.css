@@ -21,7 +21,7 @@ main {
 }
 
 .register-image {
-    width: 50%;
+    width: 50vw;
     height: 100%;
     background-image: url(/public/img/registerImg.jpg);
     background-position: center;
@@ -37,12 +37,13 @@ main {
 }
 
 .register-container {
-    width: 50%;
+    width: 50vw;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    margin: auto;
 }
 
 .registerForm {
@@ -51,7 +52,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     width: 75%;
-    height: 90vh;
+    height: 100vh;
     text-align: center;
 }
 
@@ -77,21 +78,25 @@ main {
     font-weight: 600;
 }
 #profileImage,#gender{
-    text-align: left;
-    padding-left: 70px;
+    color: grey;
+    
+}
+.custom-select{
+    width: 100%;
 }
 .input-box {
     display: block;
     width: 80%;
     height: 50px;
-    margin: 0 auto;
+    margin: 3px auto;
     padding: 15px;
     outline: none;
     border: 1px solid #FBDDBB82;
     border-radius: 5px;
 }
 
-input[type='button'] {
+.btn-input {
+    width: 100%;
     height: 45px;
     display: flex;
     flex-direction: row;
@@ -101,6 +106,7 @@ input[type='button'] {
     border: none;
     color: #FBDDBB;
     cursor: pointer;
+    box-shadow: 1px 1px 1px 1px #000000;
 }
 
 .links {
@@ -135,5 +141,12 @@ input[type='button'] {
     .registerForm {
         width: 100%;
         height: 90vh;
+    }
+    .register-title {
+        font-size: 27px;
+    }
+    .register-container #home{
+        top: -10px;
+        right: 50px;
     }
 }

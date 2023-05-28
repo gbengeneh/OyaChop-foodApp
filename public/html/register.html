@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../alertifyjs/css/alertify.css" />
+    <!-- <link rel="stylesheet" href="../alertifyjs/css/alertify.css" /> -->
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
     <title>Oya Chop: Register</title>
-    <link rel="stylesheet" href="../css/register ">
-    <style>
-.alertify-notifier {
-  top: 10px;
-  right: 10px;
-}
-.alertify-notifier .ajs-success {
-	font-size: 14px;
-  font-weight: 700;
-  color: #FFF;
-}
-.alertify-notifier .ajs-error {
-font-size: 14px;
-  font-weight: 700;
-  color: #FFF;
-}
-    </style>
+    <link rel="stylesheet" href="/public/css/register.css">
+    <!-- <style>
+    .alertify-notifier {
+    top: 10px;
+    right: 10px;
+    }
+    .alertify-notifier .ajs-success {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFF;
+    }
+    .alertify-notifier .ajs-error {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFF;
+    }
+    </style> -->
 </head>
 <body>
     <main>
@@ -31,9 +31,9 @@ font-size: 14px;
             <div class="overlay"></div>
         </section>
         <form class="registerForm" id="myForm">
-        <section class="register-container">
-            <a href="landing.html" class="homelink" id="home">Home</a>
-           
+            <section class="register-container">
+                <a href="landing.html" class="homelink" id="home">Home</a>
+        
                 <h3 class="register-title">Welcome to <span>OyaChop!</span></h3>
 
                 <label for="first-name"></label>
@@ -46,9 +46,7 @@ font-size: 14px;
                 <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" >
 
                 <label id="gender" for="gender">Gender:</label>
-                <!-- <input type="radio" name="gender" value="male" id="gender" checked required>Male
-                <input type="radio" name="gender" value="female" id="gender" required>Female -->
-                <div class="custom-select">
+                <div class="custom-select" >
                     <select id="gender" class="input-box">
                         <option value="" checked>--Select--</option>
                         <option value="male">Male</option>
@@ -56,7 +54,7 @@ font-size: 14px;
                     </select>
                 </div>
 
-                <label for="address"></label>
+                <label for="phone_number"></label>
                 <input class="input-box" type="text" name="phone_number" id="phone_number" placeholder="Your phone number" >
 
                 <label for="address"></label>
@@ -68,15 +66,18 @@ font-size: 14px;
                 <label id="profileImage" for="profileImg">Profile Image:</label>
                 <input class="input-box" type="file" name="picture" id="picture" >
     
-                <button type="submit" name="submit"  id="sub-btn" > SIGN UP </button>
+                <button type="submit" name="submit" class="btn-input"  id="sub-btn" > SIGN UP </button>
     
                 <div class="links">
                     <a href="login.html">Already have an account. <span>LOGIN</span></a>
                 </div>
-           
-        </section>
-    </form>
+            
+            </section>
+        </form>
     </main>
+
+
+
     <script>
         const form = document.querySelector('#myForm');
         
@@ -113,7 +114,7 @@ font-size: 14px;
             
         });
         
-        </script>
-    <script src="../alertifyjs/js/alertify.min.js"></script>
+    </script>
+    <!-- <script src="../alertifyjs/js/alertify.min.js"></script> -->
 </body>
 </html>
