@@ -11,9 +11,11 @@ $data = json_decode(file_get_contents('php://input'));
     
         $password = filter_var($data->password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        $sql = 'SELECT * FROM users WHERE email = `$email`';
+        $sql = "SELECT * FROM users WHERE email = '$email'";
 
-        $result = $db_con->query($ql);
+
+        $result = $db_con->query($sql);
+
 
     if($result->num_rows > 0){
 
@@ -25,28 +27,27 @@ $data = json_decode(file_get_contents('php://input'));
 
             $user_password = $row['password'];
 
-    if($email === $user_email && md5($password) === $user_password ){
-
-        setcookie('id', $user_id, time() + 86400 * 2 );
-
-        $response = json_encode(['status'=>'success','code'=>'200','message'=>'signed in.']);
+    if ($email === $user_email && password_verify($password, $user_password)) {
+        // Password verification successful
+        setcookie('id', $user_id, time() + 86400 * 2);
+    
+        $response = json_encode(['status' => 'success', 'code' => '200', 'message' => 'Signed in.']);
         echo $response;
-
-    }
-
-    }else{
-
-        $response = json_encode(['status'=>'error','code'=>'420', 'message'=>'Invalid  Details.']);
+    } else {
+        // Invalid login details
+        $response = json_encode(['status' => 'error', 'code' => '420', 'message' => 'Invalid details.']);
         echo $response;
-
     }
+    
+
+    
 
     }else{
 
         $response = json_encode(['status'=>'error','code'=>'400','message'=>'Please Complete All Fields.']);
         echo $response;
 
-    }
+    }}
    
 $db_con->close();
 

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../alertifyjs/css/alertify.css" /> -->
+    <link rel="stylesheet" href="../alertifyjs/css/alertify.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
     <title>Oya Chop: Register</title>
     <link rel="stylesheet" href="/public/css/register.css">
-    <!-- <style>
+    <style>
     .alertify-notifier {
     top: 10px;
     right: 10px;
@@ -23,7 +23,7 @@
     font-weight: 700;
     color: #FFF;
     }
-    </style> -->
+    </style>
 </head>
 <body>
     <main>
@@ -49,8 +49,8 @@
                 <div class="custom-select" >
                     <select id="gender" class="input-box">
                         <option value="" checked>--Select--</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male" name="male">Male</option>
+                        <option value="female" name="female">Female</option>
                     </select>
                 </div>
 
@@ -77,44 +77,51 @@
     </main>
 
 
-
     <script>
+
+
         const form = document.querySelector('#myForm');
-        
+
         form.addEventListener('submit', (event) => {
-          event.preventDefault();
-        
-          const formData = new FormData();
-          formData.append('firstname', form.elements.firstname.value);
-          formData.append('lastname', form.elements.lastname.value);
-          formData.append('email', form.elements.email.value);
-          formData.append('gender', form.elements.gender.value);
-          formData.append('phone_number', form.elements.phone_number.value);
-          formData.append('delivery_address', form.elements.delivery_address.value);
-          formData.append('password', form.elements.password.value);
-          const userPicture = form.elements.picture.files[0];
-          if (userPicture) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('firstname', form.elements.firstname.value);
+        formData.append('lastname', form.elements.lastname.value);
+        formData.append('email', form.elements.email.value);
+        formData.append('gender', form.elements.gender.value);
+        formData.append('phone_number', form.elements.phone_number.value);
+        formData.append('delivery_address', form.elements.delivery_address.value);
+        formData.append('password', form.elements.password.value);
+        const userPicture = form.elements.picture.files[0];
+        if (userPicture) {
             formData.append('picture', userPicture);
-          }
-          fetch('http://localhost/api/signup.php', {
+        }
+        
+        fetch('http://localhost/api/signup.php', {
             method: 'POST',
             body: formData
-          })
-          .then(async (response) => {
+        })
+        .then(async (response) => {
             const result = await response.json();
             const err = result.status;
             const msg = result.message;
-            if(err === 'error'){
-              alertify.error(msg);
-            }else{
-                alertify.success(msg);
-                document.getElementById('myForm').reset();
+            if (err === 'error') {
+            alertify.error(msg);
+            } else {
+            alertify.success(msg);
+            document.getElementById('myForm').reset();
+            // Wait for 3 seconds before redirecting
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 3000);
             }
-        })
-            
         });
+        });
+
         
     </script>
-    <!-- <script src="../alertifyjs/js/alertify.min.js"></script> -->
+
+    <script src="../alertifyjs/js/alertify.min.js"></script>
 </body>
 </html>

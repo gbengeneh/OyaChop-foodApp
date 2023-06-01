@@ -96,13 +96,14 @@ main {
 }
 
 .btn-input {
-    width: 100%;
+    width: 80%;
     height: 45px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: #00302E;
+    border-radius: 5px;
     border: none;
     color: #FBDDBB;
     cursor: pointer;

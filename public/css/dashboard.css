@@ -12,11 +12,15 @@ ul,li{
 a{
     text-decoration: none;
 }
+/* body{
+    background: #00302E;
+} */
 
 .body-content{
     position: relative;
     width:100%;
     height: 100vh;
+    /* height: auto; */
     display: flex;
 }
 .sidebar-container{
@@ -87,6 +91,7 @@ a{
     width:80%;
     position: relative;
     left: 20%;
+    
 }
 .main-content{
     width:90%;
@@ -96,6 +101,7 @@ a{
     display: flex;
     flex-direction: column;
     gap:2rem;
+    padding-bottom: 5%;
 }
 .topbar-profile{
     display: flex;
@@ -112,7 +118,7 @@ a{
 }
 .item{
     width:200px;
-    height: fit-content;
+    height: 300px;
     display: flex;
     flex-direction:column ;
     align-items: center;
@@ -169,15 +175,79 @@ a{
 
 /* DashBoard Menu */
 .bar{
-    display: block;
     width: 35px;
     height: 3px;
     margin: 7px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background: #FFFFFF;
-  }
+    display: none;
+}
 
 @media(max-width:536px){
+    .body-content{
+        position: relative;
+        width:100%;
+        height: auto;    
+    }
+    .sidebar-container{
+        height: 100vh;
+        width: 60%;
+        display: none;
+        background: grey;
+    }
+    .logo{
+        font-size: 30px;
+    }
+    .bar{
+        display: block;
+        margin: 7px 10px;
+        background: #00302E;
+    }
+    .menu-icon{
+        display: block;
+        padding: 5px;
+        height: fit-content;
+        position: fixed;
+        /* position: absolute; */
+        z-index: 3;
+    }
+    .sidebar-container.active{
+        display: block;
+        z-index: 1;
+    }
+    
+
+    .menu-icon.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-icon.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .menu-icon.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+
+        /* MAIN CONTAINER */
+
+    .main-container{
+        width:100%;
+        position: relative;
+        left: 0;
+    }
+    .user{
+        display: none;
+    }
+    .item{
+        margin: auto;
+    }
+    .topbar-profile{
+        display: block;
+        padding: 20px;
+    }
+
+
 
 }
+

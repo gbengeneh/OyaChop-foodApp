@@ -65,7 +65,7 @@ input{
     border:1px solid #FBDDBB82;
     border-radius: 5px;
 }
-input[type='button']{
+input[type='submit']{
     height: 45px;
     display: flex;
     flex-direction: row;

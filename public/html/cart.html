@@ -8,11 +8,16 @@
     <title>OyaChop | Cart</title>
     
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="/public/css/cart.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
 </head>
 <body>
   <section class="body-content">
+    <div class="menu-icon" onclick="togglemenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
     <aside class="sidebar-container">
       <div class="side-content">
       <div class="logo-container">
@@ -40,119 +45,82 @@
           </ul>
       </nav>
       </div>
-  </aside>
-  <main class="main-container">
-      <div class="main-content">
-        <section class="topbar-profile">
-          <div class="greeting">
-              <h2>Goodmorning, <span class="user-name">User!</span></h2>
-              <p>What delicious meal are you taking today?</p>
-          </div>
+    </aside>
 
-          <div class="user-content">
-              <div class="user"></div>
-          </div>
-        </section>
+    <!-- cart item details -->
 
-        <section class="items-section">
-          <div class="items-container">
-              <div class="item">
-                  <div class="item-img">
-                      <img src="../img/foodItems/efo riro with garri.jpg" alt="">
-                  </div>
+    <main class="main-container cart-page">
+      <h1 class="cart-heading">Your Cart</h1>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Sub-total</th>
+        </tr>
 
-                  <div class="item-name">
-                      <h5>Eba with Eforiro soup</h5>
-
-                      <p>The in-house pasta and chicken by chef Moose</p>
-                  </div>
-
-                  <div class="price-cart">
-                      <span class="price">N1,000.00</span>
-                      <span class="addtocart">Add to cart</span>
-                  </div>
-              </div>
-              <div class="item">
-                <div class="item-img">
-                    <img src="../img/foodItems/efo riro with garri.jpg" alt="">
-                </div>
-
-                <div class="item-name">
-                    <h5>Eba with Efiriro soup</h5>
-
-                    <p>The in-house pasta and chicken by chef Moose</p>
-                </div>
-
-                <div class="price-cart">
-                    <span class="price">N1,000.00</span>
-                    <span class="addtocart">Add to cart</span>
+        <tbody class="cart-items">
+          <!-- render cart items here -->
+          <tr>
+            <td>
+              <div class="cart-info">
+                <img src="/public/img/foodItems/edikang ikong soup.jpg">
+                <div>
+                  <p>Semo with Eforiro and Okro Soup</p>
+                  <a href="#">Remove</a>
                 </div>
               </div>
-        </section>
+            </td>
+            <td><input type="number" value="1"></td>
+            <td>N 1500</td>
+            <td>N 4500</td>
+          </tr>
 
-        <section class="cart-section">
-          <div class="cart-container">
-            <h2 class="heading">Your Cart<span>0</span></h2>
-            <div class="heading-sect">
-              <div class="heading-item">
-                <p>Item</p>
-              </div>
-              
-              <div class="heading-item">
-                <p>Qty</p>
-              </div>
-              
-              <div class="heading-item">
-                <p>Unit Price</p>
-              </div>
-              
-              <div class="heading-item">
-                <p>Sub-total</p>
-              </div>
-              
-            </div>
-
-            <div class="cart-sect">
-              <div>
-                <div class="cart-img-grp" >
-                  <img class="cart-img" src="../img/foodItems/efo riro with garri.jpg" alt="">
-                  <div>
-                    <p>Eba with Efiriro soup</p>
-                    <span>Remove</span>
-                  </div>
+          <tr>
+            <td>
+              <div class="cart-info">
+                <img src="/public/img/foodItems/edikang ikong soup.jpg">
+                <div>
+                  <p>Semo with Eforiro and Okro Soup</p>
+                  <a href="#">Remove</a>
                 </div>
               </div>
-              
-              <div class="quantity">
-                <p><span>-</span> 1 <span>+</span></p>
-              </div>
-              
-              <div>
-                <p>N 1500.00</p>
-              </div>
-              
-              <div>
-                <p>N 3500.00</p>
-              </div>
-              
-            </div>
+            </td>
+            <td><input type="number" value="1"></td>
+            <td>N 1500</td>
+            <td>N 1500</td>
+          </tr>
 
+        </tbody>
+        
+      </table>
 
-            <div class="cart-total">
-              <p>Total:</p>
-              <span>N 30000.00</span>
-            </div>
+      <div class="total-price">
+        <table>
+          <tr>
+            <td>Sub-total:</td>
+            <td id="subtotal">N 00000</td>
+          </tr>
+          <tr>
+            <td>Tax:</td>
+            <td>N 000.00</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td>N 00000.00</td>
+          </tr>
+        </table>
+      </div>
 
-            <div class="checkout-btn">
-              <button type="button">Checkout</button>
-            </div>
-
-
-          </div>
-
-        </section>
+      <div class="checkout">
+        <a href="#" class="checkout-link">Checkout</a>
       </div>
     </main>
   </section>
+
+  <script src="/public/js/app.js"></script>
+  <script src="/public/js/dashboard.js"></script>
+  <script src="/public/js/products.js"></script>
+  
 </body>
 </html>
