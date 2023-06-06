@@ -1,3 +1,5 @@
+// import { products } from ".js/products";
+
 //select element
 const productsEl = document.querySelector(".items-container");
 const cartItemsEl = document.querySelector(".cart-items");
@@ -61,7 +63,7 @@ function updateCart(){
 function renderCartItems(){
 
   cart.forEach((item)=>{
-    cartItemsEl.innerHTML += `
+    cartItemsEl.innerHTML = `
       <tr>
       <td>
         <div class="cart-info">
