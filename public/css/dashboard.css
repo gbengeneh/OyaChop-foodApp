@@ -23,7 +23,9 @@ a{
     /* height: auto; */
     display: flex;
 }
-.sidebar-container{
+/* NAVIGAION */
+
+.navigation .sidebar-container{
     height: 100%;
     width: 20%;
     background: rgba(196, 196, 196, 0.42);
@@ -33,7 +35,7 @@ a{
     position: fixed;
     left: 0;
 }
-.side-content{
+.navigation .side-content{
     /* background-color: yellow; */
     width:90%;
     height: 65%;
@@ -45,25 +47,25 @@ a{
     align-items: center;
     padding: 5rem 0 0 0;
 }
-.logo{
+.navigation .logo{
     font-family: 'Pacifico', cursive;
     font-size: 40px;
     color: #00302E;
 }
-.navbar{
+.navigation .navbar{
     height: 45%;
     width:100%;
     display: flex;
     position: relative;
 }
-.nav-menu{
+.navigation .nav-menu{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap:1rem;
     width: 100%;
 }
-.nav-menu li{
+.navigation .nav-menu li{
     width: 100%;
     display: flex;
     align-items: baseline;
@@ -76,15 +78,65 @@ a{
     border-radius: 12px;
     
 }
-.nav-menu li a{
+.navigation .nav-menu li a{
     font-size: 14px;
     color:#bcbcbc
 }
-.nav-item:active{
+.navigation .nav-item:active{
     background-color: #efefef;
     border-radius: 12px;
     color: #000;
 }
+/* DashBoard Menu */
+.bar{
+    width: 35px;
+    height: 3px;
+    margin: 7px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #FFFFFF;
+    display: none;
+}
+
+@media(max-width:536px){
+    .navigation .sidebar-container{
+        height: 100vh;
+        width: 60%;
+        display: none;
+        background: grey;
+    }
+    .navigation .logo{
+        font-size: 30px;
+    }
+    .bar{
+        display: block;
+        margin: 7px 10px;
+        background: #00302E;
+    }
+    .menu-icon{
+        display: block;
+        padding: 5px;
+        height: fit-content;
+        position: fixed;
+        /* position: absolute; */
+        z-index: 3;
+    }
+    .sidebar-container.active{
+        display: block;
+        z-index: 1;
+    }
+    .menu-icon.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-icon.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .menu-icon.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+
 
 /* MAIN CONTAINER */
 .main-container{
@@ -109,6 +161,24 @@ a{
 }
 .greeting p{
     font-size: 13px;
+}
+.categories{
+    flex-wrap: wrap;
+    height: fit-content;
+}
+.category-btn{
+    padding: 5px 20px ;
+    font-size: 18px;
+    background: rgba(196, 196, 196, 0.42);
+    border: 0;
+    box-shadow: 6px 1px 25px -16px rgba(0,0,0,1);
+    margin: 5px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.category-btn.active{
+    background: #00302E;
+    color: #efefef;
 }
 .user{
     width:50px;
@@ -173,16 +243,7 @@ a{
     cursor: pointer;
 }
 
-/* DashBoard Menu */
-.bar{
-    width: 35px;
-    height: 3px;
-    margin: 7px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background: #FFFFFF;
-    display: none;
-}
+
 
 @media(max-width:536px){
     .body-content{
@@ -190,44 +251,13 @@ a{
         width:100%;
         height: auto;    
     }
-    .sidebar-container{
-        height: 100vh;
-        width: 60%;
-        display: none;
-        background: grey;
-    }
-    .logo{
-        font-size: 30px;
-    }
-    .bar{
-        display: block;
-        margin: 7px 10px;
-        background: #00302E;
-    }
-    .menu-icon{
-        display: block;
-        padding: 5px;
-        height: fit-content;
-        position: fixed;
-        /* position: absolute; */
-        z-index: 3;
-    }
-    .sidebar-container.active{
-        display: block;
-        z-index: 1;
-    }
-    
+        /* NAVIGAION */
 
-    .menu-icon.active .bar:nth-child(1){
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-icon.active .bar:nth-child(2){
-        opacity: 0;
-    }
-    .menu-icon.active .bar:nth-child(3){
-        transform: translateY(-8px) rotate(-45deg);
-    }
-    
+
+
+        /* Check nagivation.html */
+
+
 
         /* MAIN CONTAINER */
 

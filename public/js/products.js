@@ -6,6 +6,7 @@ const products = [
     price: 1500.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/efo riro with garri.jpg",
+    category: "local dish",
   },
 
   {
@@ -14,6 +15,7 @@ const products = [
     price: 1000.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/amala and ewedu.jpg",
+    category: "local dish",
   },
 
   {
@@ -22,6 +24,7 @@ const products = [
     price: 1800.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/cheese and pupkin soup.jpg",
+    category: "local dish",
   },
 
   {
@@ -30,6 +33,7 @@ const products = [
     price: 2000.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/rice and stew.jpg",
+    category: "rice",
   },
 
   {
@@ -38,6 +42,7 @@ const products = [
     price: 1500.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/efo riro with okro soup.jpg",
+    category: "local dish",
   },
 
   {
@@ -46,6 +51,7 @@ const products = [
     price: 1800.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/egusi soup with pounded yam.jpg",
+    category: "local dish",
   },
 
   {
@@ -54,6 +60,7 @@ const products = [
     price: 2000.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/friedrice with sauce.jpg",
+    category: "rice",
   },
 
   {
@@ -62,6 +69,7 @@ const products = [
     price: 1200.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/jollof rice.jpg",
+    category: "rice",
   },
 
   {
@@ -70,6 +78,7 @@ const products = [
     price: 1400.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/ofada rice.jpg",
+    category: "rice",
   },
 
   {
@@ -78,5 +87,6 @@ const products = [
     price: 1600.00,
     decription: "delicious and yummy",
     imgSrc: "../img/foodItems/sweet potatoes chickpeas.jpg",
+    category: "snacks",
   },
 ]

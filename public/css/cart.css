@@ -24,76 +24,12 @@ body{
     display: flex;
     background: #ffffff;
 }
-.sidebar-container{
-    height: 100%;
-    width: 20%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    position: fixed;
-    left: 0;
-}
-.side-content{
-    /* background-color: yellow; */
-    width:90%;
-    height: 65%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between;         */
-    gap: 20%;
-    align-items: center;
-    padding: 5rem 0 0 0;
-}
-.logo{
-    font-family: 'Pacifico', cursive;
-    font-size: 40px;
-    color: #00302E;
-}
-.navbar{
-    height: 45%;
-    width:100%;
-    display: flex;
-    position: relative;
-}
-.nav-menu{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap:1rem;
-    width: 100%;
-}
-.nav-menu li{
-    width: 100%;
-    display: flex;
-    align-items: baseline;
-    gap:10px;
-    padding: 5px 20px;
-    cursor: pointer;
-}
-.nav-menu li:hover{
-    background-color: #efefef;
-    border-radius: 12px;
-    
-}
-.nav-menu li a{
-    font-size: 14px;
-    color:#bcbcbc
-}
 
-.nav-item a span{
-  padding-left: 5px;
-  padding-right: 5px;
-  background: #06E775;
-  color: #ffffff;
-  border-radius: 7px;
-  margin-left: 10px;
-}
-.nav-item:active{
-    background-color: #efefef;
-    border-radius: 12px;
-    color: #000;
-}
+ /* NAVIGAION */
+
+ /* using dashboard.css */
+
+ 
 /* 
 <!-- cart item details --> */
 

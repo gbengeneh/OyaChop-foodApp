@@ -3,13 +3,15 @@
 //select element
 const productsEl = document.querySelector(".items-container");
 const cartItemsEl = document.querySelector(".cart-items");
+const categoryBtn = document.querySelectorAll(".category-btn")
+
 
 //render products
 
-function renderProducts(){
+function renderProducts(filterItems){
   products.forEach((product) => {
     productsEl.innerHTML += `
-      <div class="item">
+      <div class="item" data-name="${product.category}">
         <div class="item-img">
           <img src="${product.imgSrc}" alt="">
         </div>
@@ -30,6 +32,25 @@ function renderProducts(){
   })
 }
 renderProducts();
+
+// define the filterItems function
+const filterItems = e => {
+  document.querySelector(".active").classList.remove("active");
+  e.target.classList.add("active")
+
+  // iterate over each product item 
+  products.forEach(product => {
+  //add hide product to hide the product initially
+  product.classList.add("hide");
+  })
+}
+
+// add click event to category button
+categoryBtn.forEach(button => button.addEventListener("click", filterItems))
+
+
+
+
 // create a cart array
 
 let cart = [];

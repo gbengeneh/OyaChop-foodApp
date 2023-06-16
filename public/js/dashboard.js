@@ -10,3 +10,4 @@ document.querySelectorAll(".nav-item").forEach(n => n.addEventListener("click",(
 menuIcon.classList.remove("active")
 sideBar.classList.remove("active")
 }))
+
