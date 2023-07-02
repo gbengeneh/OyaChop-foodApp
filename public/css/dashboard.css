@@ -180,6 +180,9 @@ a{
     background: #00302E;
     color: #efefef;
 }
+.hide{
+    display: none;
+}
 .user{
     width:50px;
     height: 50px;
@@ -198,6 +201,39 @@ a{
     border-radius: 5px;
     box-shadow: 1px 1px 3px 1px #000000;
 }
+.item.show{
+    animation: show .8s ease 0s 1 forwards;
+    transform-origin: center;
+}
+
+.item.hide{
+    animation: hide .8s ease 0s 1 forwards;
+    transform-origin: center;
+    display: none;
+}
+
+@keyframes hide{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0);
+        width: 0;
+        height: 0;
+        margin: 0;
+    }
+}
+@keyframes show{
+    0%{
+        transform: scale(0);
+        width: 0;
+        height: 0;
+        margin: 0;
+    }
+    100%{ 
+        transform: scale(1);
+    }
+}
 .item-img{
     width:100px;
     height: 100px;
@@ -210,6 +246,7 @@ a{
     height: 100px;
     border-radius: 50px;
 }
+
 .item-name{
     width:90%;
     text-align: center;

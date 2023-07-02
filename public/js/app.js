@@ -1,56 +1,102 @@
-// import { products } from ".js/products";
-
-//select element
+// Select DOM elements
 const productsEl = document.querySelector(".items-container");
-const cartItemsEl = document.querySelector(".cart-items");
-const categoryBtn = document.querySelectorAll(".category-btn")
+const category = document.querySelector(".categories");
 
+// Fetch and render products
+function renderProducts() {
+  // Fetch product data from the API
+  fetch("http://localhost/api/fooditems.php")
+    .then((response) => response.json())
+    .then((completeData) => {
+      // Extract products from the fetched data
+      const products = completeData[0].all_foods;
 
-//render products
+      // Add event listener for category selection
+      category.addEventListener("click", handleCategorySelection);
 
-function renderProducts(filterItems){
-  products.forEach((product) => {
-    productsEl.innerHTML += `
-      <div class="item" data-name="${product.category}">
-        <div class="item-img">
-          <img src="${product.imgSrc}" alt="">
-        </div>
-
-        <div class="item-name">
-          <h5>${product.name}</h5>
-
-          <p>${product.decription}</p>
-        </div>
-
-        <div class="price-cart">
-          <span class="price">N ${product.price}</span>
-          <span class="addtocart" onclick="addToCart(${product.id})">Add to cart</span>
-        </div>
-      </div>
-    
-    `
-  })
+      // Render products initially
+      renderProductItems(products);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
+
+// Handle category selection
+function handleCategorySelection(event) {
+  if (event.target.classList.contains("category-btn")) {
+    // Get the selected category from the clicked button
+    const selectedCategory = event.target.dataset.name;
+
+    // Highlight the selected category button
+    highlightCategoryButton(event.target);
+
+    // Filter and show/hide products based on the selected category
+    filterProductsByCategory(selectedCategory);
+  }
+}
+
+// Highlight the selected category button
+function highlightCategoryButton(selectedButton) {
+  const activeButton = category.querySelector(".active");
+  activeButton.classList.remove("active");
+  selectedButton.classList.add("active");
+}
+
+// Filter and show/hide products based on the selected category
+function filterProductsByCategory(selectedCategory) {
+  const productItems = productsEl.querySelectorAll(".item");
+  productItems.forEach((item) => {
+    const itemCategory = item.getAttribute("data-name");
+    if (selectedCategory === "all" || selectedCategory === itemCategory) {
+      item.classList.add("show");
+      item.classList.remove("hide");
+    } else {
+      item.classList.add("hide");
+      item.classList.remove("show");
+    }
+  });
+}
+
+// Render product items
+function renderProductItems(products) {
+  productsEl.innerHTML = "";
+
+  products.forEach((product) => {
+    const productItem = createProductItemMarkup(product);
+    productsEl.insertAdjacentHTML("beforeend", productItem);
+  });
+}
+
+// Create HTML markup for a product item
+function createProductItemMarkup(product) {
+  return `
+    <div class="item ${product.category_id}" data-name="${product.category_id}">
+      <div class="item-img">
+        <img src="http://localhost/food_order/images/food/${product.image_name}" alt="">
+      </div>
+      <div class="item-name">
+        <h5>${product.title}</h5>
+        <p>${product.description}</p>
+      </div>
+      <div class="price-cart">
+        <span class="price">N ${product.price}</span>
+        <span class="addtocart" onclick="addToCart(${product.id})">Add to cart</span>
+      </div>
+    </div>
+  `;
+}
+
+// Call the renderProducts function to start rendering
 renderProducts();
 
-// define the filterItems function
-const filterItems = e => {
-  document.querySelector(".active").classList.remove("active");
-  e.target.classList.add("active")
-
-  // iterate over each product item 
-  products.forEach(product => {
-  //add hide product to hide the product initially
-  product.classList.add("hide");
-  })
-}
-
-// add click event to category button
-categoryBtn.forEach(button => button.addEventListener("click", filterItems))
 
 
 
 
+
+
+const cartItemsEl = document.querySelector(".cart-items");
 // create a cart array
 
 let cart = [];
