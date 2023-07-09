@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+    <title>OyaChop | Checkout</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+    <link rel="stylesheet" href="/public/css/checkout.css">
+</head>
+<body>
+  <section class="body-content">
+    <div class="navigation">
+      <div class="menu-icon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </div>
+      <aside class="sidebar-container">
+          <div class="side-content">
+              <div class="logo-container">
+                  <h1 class="logo">Oya Chop</h1>
+              </div>
+        
+              <nav class="navbar">
+                  <ul class="nav-menu">
+                      <li class="nav-item">
+                          <img src="../img/dashboard/home.svg" alt="">
+                          <a href="dashboard.html">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                          <img src="../img/dashboard/profile.svg" alt="">
+                          <a href="profile.html">Your Profile</a>
+                      </li>
+                      <li class="nav-item">
+                          <img src="../img/dashboard/order.svg" alt="">
+                          <a href="order.html">Orders</a>
+                      </li>
+                      <li class="nav-item">
+                          <img src="../img/dashboard/bookmark.svg" alt="">
+                          <a href="cart.html">Your Cart</a>
+                      </li>   
+                  </ul>
+              </nav>
+              
+          </div>
+      </aside>
+
+  </div>
+    
+
+    <!-- Checkout page -->
+
+    <main class="main-container checkout-page">
+      <div class="shippingForm">
+        <div class="formContainer">
+          <h1 class="formHeading">Shipping Address</h1>
+          <form action="">
+            <div class="subFormGroup">
+              <input class="formInput" name="firstname" type="text" placeholder="First Name*">
+              <input class="formInput" name="lastname" type="text" placeholder="Last Name*">
+              <input class="formInput" name="phone" type="text" placeholder="Phone*">
+            </div>
+            
+
+            <textarea name="address" id="address" cols="30" rows="7" placeholder="Address*"></textarea>
+
+            <div class="subFormGroup">
+              <input class="formInput" name="apartment" type="text" placeholder="Apartment/Suite etc*">
+              <input class="formInput" name="city" type="text" placeholder="City/Town*">
+            </div>
+            
+            <button class="formBtn">Save</button>
+
+          </form>
+        </div>
+      </div>
+      <div class="paymentForm">
+        <div class="paymentContainer">
+          <div class="paymentMethod">
+            <h1 class="paymentHeading">Payment Method</h1>
+            <input class="payOption" type="radio" name="payment" value="cash">
+            <label for="cash">Cash on Delivery</label>
+            <input class="payOption" type="radio" name="payment" value="card">
+            <label for="card">Via Paypal</label>
+
+            <div class="creditcards">
+              <h1 class="paymentHeading">Card Information</h1>
+              <div class="cardIcons">
+                <img src="/public/img/paypal1.png" width="40" class="icons">
+                <img src="/public/img/visa.jpg" width="40" class="icons">
+                <img src="/public/img/masterCard.jpg" width="40" class="icons">
+              </div>
+              <input type="password" placeholder="Card Number" class="payInput">
+              <div class="cardInfo">
+                <input type="text" placeholder="mm" class="payInput sm">
+                <input type="text" placeholder="yyyy" class="payInput sm">
+                <input type="text" placeholder="cvv" class="payInput sm">
+              </div>
+              <button class="payBtn">Place Order</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Hamburger menu -->
+  <script src="/public/js/dashboard.js"></script>
+  
+</body>
+</html>

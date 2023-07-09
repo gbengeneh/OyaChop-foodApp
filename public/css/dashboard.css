@@ -74,16 +74,16 @@ a{
     cursor: pointer;
 }
 .nav-menu li:hover{
-    background-color: #efefef;
+    background-color: #acacac;
     border-radius: 12px;
-    
 }
 .navigation .nav-menu li a{
-    font-size: 14px;
-    color:#bcbcbc
+    font-size: 16px;
+    color:#5e5e5e;
+    font-weight: 600;
 }
 .navigation .nav-item:active{
-    background-color: #efefef;
+    background-color: #cac9c9;
     border-radius: 12px;
     color: #000;
 }
@@ -143,7 +143,7 @@ a{
     width:80%;
     position: relative;
     left: 20%;
-    
+    height: fit-content;
 }
 .main-content{
     width:90%;
@@ -316,6 +316,11 @@ a{
 
 
         /* Check nagivation.html */
+    .navigation .nav-menu li a{
+        font-size: 16px;
+        color:#FFFFFF;
+        font-weight: 600;
+    }
 
 
 

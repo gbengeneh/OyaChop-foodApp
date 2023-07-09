@@ -10,6 +10,7 @@
         rel="stylesheet">
     <title>OyaChop | Profile</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
     <link rel="stylesheet" href="/public/css/profile.css">
 </head>
 
@@ -59,48 +60,57 @@
 
         <!-- Profile page -->
 
-        <main class="main-container profile-page">
-            <div class="account-container">
-                <h2>Account Settings</h2>
-
-                <form class="account-form">
-                    <div class="left">
-                        <label for="first-name">First Name</label>
-                        <input type="text" name="first-name" id="">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="">
-                    </div>
-                    <div class="right">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" name="last-name" id="">
-                        <label for="phone">Phone number</label>
-                        <input type="text" name="phone" id="">
-                    </div>
-                </form>
-            </div>
-            <div class="password-container">
-                <h2>Password Settings</h2>
-
-                <form class="pass-form">
-                    <div class="top">
-                        <label for="old-pass">Old Password</label>
-                        <input type="password" name="old-pass" id="">
-
-                    </div>
-                    <div class="bottom">
-                        <div>
-                            <label for="new-pass">New Password</label>
-                            <input type="password" name="new-pass" id="">
+        <main class="main-container">
+            <div class="profile-page">
+                <div class="profile-picture-wrapper" id="profile-image-mobile">
+                    <img src="/public/img/pro-pic.jpg" alt="">
+                </div>
+                <div class="account-container">
+                    <h2>Account Settings</h2>
+    
+                    <form class="account-form">
+                        <div class="left">
+                            <label for="first-name">First Name</label>
+                            <input type="text" name="first-name" id="">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="">
                         </div>
-                        <div>
-                            <label for="con-pass">Confirm new password</label>
-                            <input type="password" name="con-pass" id="">
+                        <div class="right">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" name="last-name" id="">
+                            <label for="phone">Phone number</label>
+                            <input type="text" name="phone" id="">
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
 
-            <button id="update-btn">Update</button>
+                <div class="password-container">
+                    <h2>Password Settings</h2>
+    
+                    <form class="pass-form">
+                        <div class="top">
+                            <label for="old-pass">Old Password</label>
+                            <input type="password" name="old-pass" id="">
+    
+                        </div>
+                        <div class="bottom">
+                            <div>
+                                <label for="new-pass">New Password</label>
+                                <input type="password" name="new-pass" id="">
+                            </div>
+                            <div>
+                                <label for="con-pass">Confirm new password</label>
+                                <input type="password" name="con-pass" id="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    
+                <button id="update-btn">Update</button>
+
+            </div>
+            
+            
         </main>
     </section>
 

@@ -1,6 +1,6 @@
 @import url(./fonts.css);
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,13 +20,12 @@ a {
     background: #00302E;
 } */
 
-.body-content {
+/* .body-content {
     position: relative;
     width: 100%;
     height: 100vh;
-    /* height: auto; */
     display: flex;
-}
+} */
 
 /* NAVIGAION */
 
@@ -41,16 +40,14 @@ a {
     left: 0;
 }
 
-.navigation .side-content {
-    /* background-color: yellow; */
-    width: 80%;
+.navigation .side-content{
+    width:90%;
     height: 75%;
+    margin: 0 auto;
     display: flex;
-    gap: 1rem;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    padding: 5rem 0 0 2rem;
+    gap: 1rem;
+    align-items: center;
 }
 
 .profile-picture-wrapper {
@@ -64,7 +61,6 @@ a {
     object-fit: cover;
     object-position: top;
     border-radius: 50%;
-    margin: 1rem;
 }
 
 .navigation .logo {
@@ -97,22 +93,6 @@ a {
     cursor: pointer;
 }
 
-.nav-menu li:hover {
-    background-color: #efefef;
-    border-radius: 12px;
-
-}
-
-.navigation .nav-menu li a {
-    font-size: 14px;
-    color: #bcbcbc
-}
-
-.navigation .nav-item:active {
-    background-color: #efefef;
-    border-radius: 12px;
-    color: #000;
-}
 
 /* DashBoard Menu */
 .bar {
@@ -123,7 +103,7 @@ a {
     transition: all 0.3s ease-in-out;
     background: #FFFFFF;
     display: none;
-}
+} */
 
 /* MAIN CONTAINER */
 .main-container {
@@ -131,22 +111,21 @@ a {
     position: relative;
     left: 20%;
     height: fit-content;
-    /* background-color: #000; */
-
 }
-
+.profile-page{
+    padding: 60px;
+}
+#profile-image-mobile{
+    display: none;
+}
 .account-container,
 .password-container {
-    width: 90%;
+    width: 100%;
     height: fit-content;
-    margin: 3rem auto 0;
-    /* padding-top: 2rem; */
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* padding-bottom: 5%; */
-    padding-left: 1rem;
-    /* background-color: #00302E; */
 }
 
 .password-container {
@@ -155,32 +134,25 @@ a {
 
 .account-form {
     display: flex;
-    gap: 20px;
-    /* background-color: pink; */
-    /* padding-left: 1.5rem; */
-
+    justify-content: space-between;
 }
 
 .account-form div {
-    /* background-color: aqua; */
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .pass-form {
-    /* background-color: palevioletred; */
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
 }
 
 .pass-form div.top {
     display: flex;
     flex-direction: column;
     width: 40%;
-    padding-right: 1rem;
 }
 
 .pass-form div.bottom {
@@ -192,27 +164,21 @@ a {
     width: 40%;
     display: flex;
     flex-direction: column;
-    padding-right: 1rem;
 }
-
-/* .bottom div input{
-    margin-right: 20px;
-} */
 
 input {
     height: 45px;
     border-radius: 5px;
     outline: none;
     border: 1px solid #ccc;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     padding-left: 1rem;
 }
 
 #update-btn {
-    display: block;
     width: 180px;
     height: 45px;
-    margin: 0 0 0 6rem;
+    font-size: 18px;
     background-color: #00302E;
     color: #fff;
     border-radius: 5px;
@@ -228,9 +194,15 @@ input {
         display: none;
         background: grey;
     }
-
+    .navigation .side-content{
+        height: 65%;
+        gap: 20%;
+    }
     .navigation .logo {
         font-size: 30px;
+    }
+    .profile-picture-wrapper {
+        display: none;
     }
 
     .bar {
@@ -264,4 +236,44 @@ input {
     .menu-icon.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+    
+    /* MAIN CONTAINER */
+    .profile-page{
+        padding: 50px 20px;
+    }
+    #profile-image-mobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .account-container,
+    .password-container {
+        width: 100%;
+        height: fit-content;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .pass-form div.top {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .pass-form div.bottom {
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .bottom div {
+        width: 100%;
+    }
+    #update-btn {
+        margin: 10px;
+    }
+
+
 }

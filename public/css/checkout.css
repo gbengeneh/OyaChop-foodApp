@@ -1,0 +1,180 @@
+.checkout-page{
+  display: flex;
+  padding: 30px 50px;
+  gap: 20px;
+}
+.shippingForm{
+  border: 1px solid #ddd;
+  flex-basis: 80%;
+  height: fit-content;
+}
+.formContainer{
+  padding: 15px 20px;
+}
+.formHeading{
+  color: #015c2e;
+  font-weight: 500;
+  margin: auto 20px;
+}
+form{
+  padding: 15px auto;
+  display: flex;
+  flex-direction: column;
+}
+.formInput{
+  padding: 10px;
+  margin: 15px 20px;
+  width: 40%;
+  outline: none;
+  font-size: 18px;
+  border: 1px solid #ddd;
+}
+.formInput::placeholder{
+  color: #acaaaa;
+}
+textarea{
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  margin: 10px 20px;
+}
+textarea::placeholder{
+  color: #acaaaa;
+}
+.formBtn{
+  padding: 10px;
+  font-size: 16px;
+  background: #00302E;
+  color: #ffffff;
+  width: 150px;
+  margin-left:auto;
+}
+.formBtn{
+  padding: 10px;
+  font-size: 16px;
+  background: #00302E;
+  color: #ffffff;
+  width: 150px;
+  margin: auto 20px;
+  margin-left:auto;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.formBtn:hover{
+  background: #015c2e;
+  color: #ffffff;
+}
+.paymentForm{
+  border: 1px solid #ddd;
+  height: fit-content;
+}
+.payOption{
+  margin-left: 30px;
+}
+.creditcards{
+  margin: 20px auto;
+}
+.paymentContainer{
+  padding: 15px 20px;
+}
+.paymentHeading{
+  color: #015c2e;
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+.icons{
+  width: 50px;
+}
+.payInput{
+  padding: 8px;
+  width: 100%;
+  margin: 15px 0;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid grey;
+}
+.payInput::placeholder{
+  color: lightgray;
+}
+.cardIcons{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.cardInfo{
+  display: flex;
+  justify-content: space-between;
+}
+.sm{
+  width: 30%;
+}
+.payBtn{
+  height: 40px;
+  width: 100%;
+  margin-top: 25px;
+  border: 0;
+  background: #00302E;
+  color: #ffffff;
+  font-size: 16px;
+  box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+  -webkit-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+  -moz-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+  border-radius: 7px;
+  cursor: pointer;
+}
+@media(max-width:550px){
+  .checkout-page{
+    flex-direction: column;
+    padding: 50px 10px;
+  }
+  .shippingForm{
+    flex-basis: 100%;
+  }
+  .formContainer{
+    padding: 25px 10px;
+  }
+  .subFormGroup{
+    display: flex;
+    flex-direction: column;
+  }
+  .formInput{
+    margin: 10px auto;
+    width: 100%;
+    font-size: 15px;
+  }
+  textarea{
+    font-size: 15px;
+    /* margin: 10px; */
+  }
+  .payOption{
+    margin-left: 0;
+  }
+  .paymentContainer{
+    padding: 15px 10px;
+  }
+  .icons{
+    width: 40px;
+  }
+  .cardInfo{
+    display: flex;
+    justify-content: space-between;
+  }
+  .sm{
+    width: 30%;
+  }
+  .payBtn{
+    height: 40px;
+    width: 100%;
+    margin-top: 25px;
+    border: 0;
+    background: #00302E;
+    color: #ffffff;
+    font-size: 16px;
+    box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+    -webkit-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+    -moz-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+    border-radius: 7px;
+    cursor: pointer;
+  }
+}
