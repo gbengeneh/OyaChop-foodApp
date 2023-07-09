@@ -82,7 +82,7 @@ a{
     color:#5e5e5e;
     font-weight: 600;
 }
-.navigation .nav-item:active{
+.navigation .nav-item.active{
     background-color: #cac9c9;
     border-radius: 12px;
     color: #000;

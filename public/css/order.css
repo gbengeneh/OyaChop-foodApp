@@ -1,0 +1,74 @@
+.order-page{
+  padding: 40px;
+}
+.orderPageHeading{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.order-logo{
+  width: 60px;
+  color: brown;
+}
+.orderStatusDiv{
+  width: 100%;
+  height: 40px;
+  padding: 3px;
+  background: #ddd;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.orderStatus.active{
+  border-radius: 10px;
+  background: #fff;
+}
+.orderStatus{
+  width: 33%;
+  height: 100%;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 0px;
+  border: none;
+  background: transparent;
+}
+.orderItemsWrap{
+  padding: 15px;
+}
+.orderedItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px auto;
+}
+.leftDiv{
+  display: flex;
+  align-items: center;
+}
+.orderImage{
+  width: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.orderCode{
+  font-size: 20px;
+}
+.orderUpdate span{
+  font-weight: 600;
+}
+.orderPrice{
+  margin-top: 10px;
+  border: 1px solid #000;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+@media(max-width:536px){
+  .order-page{
+    padding: 50px 10px;
+  }
+  .orderImage{
+    width: 60px;
+    margin-right: 10px;
+  }
+}

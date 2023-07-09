@@ -8,6 +8,7 @@
     <title>OyaChop | Order</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
     <link rel="stylesheet" href="/public/css/dashboard.css">
+    <link rel="stylesheet" href="/public/css/order.css">
 </head>
 <body>
   <section class="body-content">
@@ -52,7 +53,65 @@
 
     <!-- Order page -->
 
-    <main class="main-container cart-page">
+    <main class="main-container">
+        <div class="order-page">
+            <div class="orderPageHeading">
+                <img class="order-logo" src="/public/img/transaction-order (1).svg" alt="order">
+                <h1 class="orderHeading">Orders</h1>
+            </div>
+            <div class="orderStatusDiv">
+                <button class="orderStatus active" data-name="all">All</button>
+                <button class="orderStatus" data-name="pending">Pending</button>
+                <button class="orderStatus" data-name="delivered">Delivered</button>
+            </div>
+            <div class="orderItemsWrap">
+                <div class="orderedItem">
+                    <div class="leftDiv">
+                        <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
+                        <div class="orderDetails">
+                            <h2 class="orderCode">Order #0001</h2>
+                            <p class="orderTitle">Eba with Efo Riro</p>
+                            <p class="orderUpdate">Status: <span>COMPLETED</span></p>
+                        </div>
+                    </div>
+                    <div class="rightDiv">
+                        <small class="orderTime">10 mins ago</small>
+                        <h3 class="orderPrice">N 1200</h3>
+                    </div>
+                </div>
+
+                <div class="orderedItem">
+                    <div class="leftDiv">
+                        <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
+                        <div class="orderDetails">
+                            <h2 class="orderCode">Order #0002</h2>
+                            <p class="orderTitle">Eba with Efo Riro</p>
+                            <p class="orderUpdate">Status: <span>COMPLETED</span></p>
+                        </div>
+                    </div>
+                    <div class="rightDiv">
+                        <small class="orderTime">16 mins ago</small>
+                        <h3 class="orderPrice">N 1200</h3>
+                    </div>
+                </div>
+
+                <div class="orderedItem">
+                    <div class="leftDiv">
+                        <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
+                        <div class="orderDetails">
+                            <h2 class="orderCode">Order #0003</h2>
+                            <p class="orderTitle">Eba with Efo Riro</p>
+                            <p class="orderUpdate">Status: <span>COMPLETED</span></p>
+                        </div>
+                    </div>
+                    <div class="rightDiv">
+                        <small class="orderTime">10 mins ago</small>
+                        <h3 class="orderPrice">N 1200</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
       
     </main>
   </section>
