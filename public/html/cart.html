@@ -89,56 +89,58 @@
         </div>
         
       </div>
-      
-      <div id="cartActive" >
-         <table>
-        <tr>
-          <th>Item</th>
-          <th>Qty</th>
-          <th>Unit Price</th>
-          <th>Sub-total</th>
-        </tr>
-
-        <tbody class="cart-items">
-          <!--render cart items here -->
-
-
-        </tbody>
-        
-        </table>
-
-        <div class="total-price">
+      <div class="cart-inner">
+        <div id="cartActive" >
           <table>
-            <tr>
-              <td>Sub-total:</td>
-              <td id="subtotal">N 00000</td>
-            </tr>
-            <tr>
-              <td>Tax:</td>
-              <td id="tax">N 000.00</td>
-            </tr>
-            <tr>
-              <td>Total:</td>
-              <td id="total">N 00000.00</td>
-            </tr>
-          </table>
-        </div>
-        
-        <div class="checkout">
-          <a href="checkout.html" class="checkout-link">Checkout</a>
-        </div>
+         <tr>
+           <th>Item</th>
+           <th>Qty</th>
+           <th>Unit Price</th>
+           <th>Sub-total</th>
+         </tr>
+ 
+         <tbody class="cart-items">
+           <!--render cart items here -->
+ 
+ 
+         </tbody>
+         
+         </table>
+ 
+         <div class="total-price">
+           <table>
+             <tr>
+               <td>Sub-total:</td>
+               <td id="subtotal">N 00000</td>
+             </tr>
+             <tr>
+               <td>Tax:</td>
+               <td id="tax">N 000.00</td>
+             </tr>
+             <tr>
+               <td>Total:</td>
+               <td id="total">N 00000.00</td>
+             </tr>
+           </table>
+         </div>
+         
+         <div class="checkout">
+           <a href="checkout.html" class="checkout-link">Checkout</a>
+         </div>
+       </div>
+       <div id="cartEmpty">
+         <div class="cartEmptyImageDiv">
+           <img src="../img/empty-cart.png" class="cartEmptyImage" alt="empty cart">
+         </div>
+         
+         <div class="cartEmptyDesc">
+           <p>Cart is Empty, Go to Dashboard to add Food Items to Cart.</p>
+ 
+           <a href="dashboard.html" class="cartEmptyLink">Go to Dashboard</a>
+         </div>
+       </div>
       </div>
-      <div id="cartEmpty">
-        <div class="cartEmptyImageDiv">
-          <img src="../img/empty-cart.png" class="cartEmptyImage" alt="empty cart">
-        </div>
-        
-        <div class="cartEmptyDesc">
-          <p>Cart is Empty, Go to Dashboard to add Food Items to Cart.</p>
-
-          <a href="dashboard.html" class="cartEmptyLink">Go to Dashboard</a>
-        </div>
-      </div>
+      
       
     </main>
   </section>

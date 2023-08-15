@@ -27,6 +27,7 @@ function renderProducts() {
 
       // Render products initially
       renderProductItems(products);
+      getUser()
     })
     .catch((error) => {
       console.log(error);
@@ -536,9 +537,8 @@ renderCart();
 renderCartItems()
 });
 
-//define a function to get the user details from the backend and render on the frontend
+//define a function to get the user details from the backend and render on the profile page
 function getUser() {
-  if (isProfilePage) {
     const BASE_URL = 'http://localhost/api/profile.php';
     const user_id = sessionStorage.getItem('user_id');
 
@@ -556,7 +556,6 @@ function getUser() {
     .then(data => {
 
       const userDetails = data.user
-      console.log(userDetails)
       // Update the user details in the HTML
       const userFirstName = document.getElementById("user_firstname");
       const userLastName = document.getElementById("user_lastname");
@@ -564,21 +563,32 @@ function getUser() {
       const userPhone = document.getElementById("user_phone");
       const userProfilePic = document.querySelectorAll(".profile-image");
 
-      // Update the elements with the fetched data
-      userFirstName.value = userDetails.firstname;
-      userLastName.value = userDetails.lastname;
-      userEmail.value = userDetails.email;
-      userPhone.value = userDetails.phone_number;
-      //update the images on mobile and desktop view
-      userProfilePic.forEach(image => {
-        image.src = `http://localhost/api/${userDetails.picture}`;
-      });
+      if(isProfilePage){
+        // Update the elements with the fetched data
+        userFirstName.value = userDetails.firstname;
+        userLastName.value = userDetails.lastname;
+        userEmail.value = userDetails.email;
+        userPhone.value = userDetails.phone_number;
+        //update the images on mobile and desktop view
+        userProfilePic.forEach(image => {
+          image.src = `http://localhost/api/${userDetails.picture}`;
+        });
+      }else{
+        // Update the user details in the HTML
+        const userName = document.querySelector(".user-name")
+        const profileImage = document.querySelector(".user-image")
+  
+        //update the images on dashboard page
+        userName.innerText = userDetails.firstname;
+        profileImage.src = `http://localhost/api/${userDetails.picture}`
+      }
+      
 
-      console.log(userProfilePic)
+
+      
       
     })
     .catch(error => {
       console.error('Error:', error);
     });
-  }
 }

@@ -45,7 +45,6 @@ body{
 }
 .cart-heading{
   font-size: 20px;
-  padding-bottom: 12px;
 }
 .cart-reset-title{
   font-size: 20px;
@@ -58,7 +57,11 @@ body{
 }
 .cartHeading-div{
   display:flex;
-  gap: 600px;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-inner{
+  width: 100%;
 }
 #cartEmpty{
   display: none;
@@ -92,7 +95,7 @@ body{
   border-radius: 5px;
 }
 table{
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
 }
 .cart-info{
@@ -132,11 +135,11 @@ td a{
 .total-price{
   display: flex;
   justify-content: flex-end;
-  width: 80%;
+  width: 100%;
 }
 .total-price table{
   border-top: 3px solid #00302E;
-  max-width: 350px;
+  max-width: 323px;
   width: 100%;
 }
 td:last-child{
@@ -163,7 +166,7 @@ th:last-child{
     position: relative;
     left: 0%;
     height: auto;
-    padding: 20px 20px;
+    padding: 50px 20px;
   }
   table{
     width: 100%;
