@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>OyaChop | Profile</title>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
     <link rel="stylesheet" href="/public/css/dashboard.css">
@@ -23,89 +23,117 @@
                 <span class="bar"></span>
             </div>
             <aside class="sidebar-container">
-
                 <div class="side-content">
                     <div class="logo-container">
-                        <h1 class="logo">Oya Chop</h1>
+                        <h1 class="logo" onclick="getUser()">Oya Chop</h1>
                     </div>
-
-                    <div class="profile-picture-wrapper">
-                        <img src="/public/img/pro-pic.jpg" alt="">
-                    </div>
-
+              
                     <nav class="navbar">
                         <ul class="nav-menu">
                             <li class="nav-item">
-                                <img src="../img/dashboard/home.svg" alt="">
-                                <a href="dashboard.html">Dashboard</a>
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/home.svg" class="nav-item-img" alt="">
+                                    <a href="dashboard.html">Dashboard</a>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <img src="../img/dashboard/profile.svg" alt="">
-                                <a href="profile.html">Your Profile</a>
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/profile.svg" class="nav-item-img" alt="">
+                                    <a href="profile.html">Your Profile</a>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <img src="../img/dashboard/order.svg" alt="">
-                                <a href="order.html">Orders</a>
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
+                                    <a href="order.html">Orders<span class="orderQuantity">0</span></a>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <img src="../img/dashboard/bookmark.svg" alt="">
-                                <a href="cart.html">Your Cart</a>
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/cart.svg" class="nav-item-img" alt="">
+                                    <a href="cart.html">Your Cart<span class="cartQuantity">0</span></a>
+                                </div>
                             </li>
                         </ul>
                     </nav>
+                    <div class="bottomDiv">
+                      <ul class="nav-menu">
+                          <li class="nav-item">
+                              <a href="support.html">
+                                  <i class="fa-solid fa-circle-question"></i>
+                                  <span>Help & Support</span>
+                              </a>
+                          </li>
+      
+                          <li class="nav-item">
+                              <a href="landing.html">
+                                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                  <span>Log Out</span>
+                              </a>
+                          </li>
+                      </ul>
+                    </div>
                 </div>
             </aside>
+      
         </div>
-
 
         <!-- Profile page -->
 
         <main class="main-container">
             <div class="profile-page">
-                <div class="profile-picture-wrapper" id="profile-image-mobile">
-                    <img src="/public/img/pro-pic.jpg" alt="">
+                <div class="group-right">
+                  <div class="profile-picture-wrapper" id="profile-image-mobile">
+                    <img src="" class="profile-image" alt="profile pic">
+                  </div>
                 </div>
                 <div class="account-container">
+                  <div class="group-left">
                     <h2>Account Settings</h2>
-    
                     <form class="account-form">
-                        <div class="left">
-                            <label for="first-name">First Name</label>
-                            <input type="text" name="first-name" id="">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="">
-                        </div>
-                        <div class="right">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" name="last-name" id="">
-                            <label for="phone">Phone number</label>
-                            <input type="text" name="phone" id="">
-                        </div>
+                      <div class="left">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="first-name" class="disabled" id="user_firstname" value="" disabled>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="user_email" class="disabled" value="" disabled>
+                      </div>
+                      <div class="right">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="last-name" id="user_lastname" class="disabled" value="" disabled>
+                        <label for="phone">Phone number</label>
+                        <input type="text" name="phone" id="user_phone" class="disabled" value="" disabled>
+                      </div>
                     </form>
+                  </div>
+                  <div class="group-right">
+                    <div class="profile-picture-wrapper">
+                        <img src="" class="profile-image" alt="profile pic">
+                    </div>
+                  </div>
                 </div>
-
+         
                 <div class="password-container">
                     <h2>Password Settings</h2>
-    
+        
                     <form class="pass-form">
                         <div class="top">
                             <label for="old-pass">Old Password</label>
-                            <input type="password" name="old-pass" id="">
-    
+                            <input type="password" name="old-pass">
+        
                         </div>
                         <div class="bottom">
                             <div>
                                 <label for="new-pass">New Password</label>
-                                <input type="password" name="new-pass" id="">
+                                <input type="password" name="new-pass">
                             </div>
                             <div>
                                 <label for="con-pass">Confirm new password</label>
-                                <input type="password" name="con-pass" id="">
+                                <input type="password" name="con-pass">
                             </div>
                         </div>
                     </form>
                 </div>
-    
+        
                 <button id="update-btn">Update</button>
 
             </div>
@@ -116,7 +144,12 @@
 
     <!-- Hamburger menu -->
     <script src="/public/js/dashboard.js"></script>
-
+    <!-- javascript for app functionalities -->
+    <script src="/public/js/app.js"></script>
+    <!-- Call getUser function when the profile page is loaded -->
+    <script>
+        getUser() 
+    </script>
 </body>
 
 </html>

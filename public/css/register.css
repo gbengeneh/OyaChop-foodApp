@@ -124,6 +124,21 @@ main {
 .links a span{
     font-weight: 600;
 }
+.passwordDiv{
+    width: 80%;
+    position: relative;
+}
+#password{
+    width: 100%;
+    padding-right: 30px;
+}
+#passwordIcon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
 
 /* RESPONSIVE */

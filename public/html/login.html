@@ -4,26 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../alertifyjs/css/alertify.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
-    <title>Oya Chop: Login</title>
+    <title>Oya Chop | Login</title>
     <link rel="stylesheet" href="/public/css/login.css">
-    <style>
-        .alertify-notifier {
-        top: 10px;
-        right: 10px;
-        }
-        .alertify-notifier .ajs-success {
-        font-size: 14px;
-        font-weight: 700;
-        color: #FFF;
-        }
-        .alertify-notifier .ajs-error {
-        font-size: 14px;
-        font-weight: 700;
-        color: #FFF;
-        }
-        </style>
 </head>
 <body>
     <main>
@@ -36,8 +19,12 @@
                 <h3 class="login-title">Welcome Back!</h3>
                 <label for="email"></label>
                 <input type="email" name="email" id="email" placeholder="Your email address">
-                <label for="pass"></label>
-                <input type="password" name="password" id="password" placeholder="Your password">
+
+                <div class="passwordDiv">
+                    <label for="pass"></label>
+                    <input type="password" name="password" id="password" placeholder="Your Password" required>
+                    <img id="passwordIcon" src="../img/eye-close.svg" onclick="togglePassword()">
+                </div>
 
                 <input type="submit" name="submit" value="LOGIN">
 
@@ -53,8 +40,9 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
 
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
 
             // Make the API request
             fetch('http://localhost/api/signin.php', {
@@ -64,29 +52,34 @@
                 },
                 body: JSON.stringify({ email: email, password: password })
             })
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Login failed');
-                }
-            })
-            .then(function(data) {
-                if (data && data.status === 'success') {
-                    // Redirect to the dashboard page after successful login
+            .then(async (response) => {
+                const result = await response.json();
+                const err = result.status;
+                const msg = result.message;
+                if(err === 'error'){
+                alertify.error(msg);
+                }else{
+
+                    const user_id = result.user_id;
+                    
+                        sessionStorage.setItem('user_id', user_id);
+
                     window.location.href = 'dashboard.html';
-                } else {
-                    console.error('Invalid email or password');
+                    
                 }
             })
             .catch(function(error) {
                 console.error('Error:', error);
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.warning('Invalid Email or Password');
             });
         });
     </script>
 
 
-    <script src="../alertifyjs/js/alertify.min.js"></script>
+    <!-- Alertify script -->
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+    <script src="/public/js/password.js"></script>
 </body>
 </html>
 

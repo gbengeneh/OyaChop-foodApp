@@ -1,3 +1,4 @@
+    //Handle Hamburger Menu on Landing page
 const menuIcon = document.querySelector(".menu-icon")
     const menuList = document.querySelector(".menu-list")
     
@@ -10,3 +11,4 @@ const menuIcon = document.querySelector(".menu-icon")
       menuIcon.classList.remove("active")
       menuList.classList.remove("active")
     }))
+

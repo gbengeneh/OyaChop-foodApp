@@ -34,3 +34,29 @@ function handleOrderStatus(event) {
 orderStatus.forEach((button) => {
   button.addEventListener("click", handleOrderStatus);
 });
+
+//Hide or display profile menu
+
+const user = document.querySelector(".user")
+const profileMenu = document.querySelector(".profile-menu")
+
+let showProfile = false
+
+function showProfileMenu(){
+  if(showProfile){
+    profileMenu.style.visibility = "visible"
+  }else{
+    profileMenu.style.visibility = "hidden"
+  }
+}
+
+function toggleProfileMenu() {
+  showProfile = !showProfile; // Toggle the value of showProfile
+  showProfileMenu(); // Call the function to update the visibility
+}
+
+// Add click event listener to the user element
+user.addEventListener("click", toggleProfileMenu);
+
+
+

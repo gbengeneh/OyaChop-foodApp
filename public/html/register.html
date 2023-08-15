@@ -8,22 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
     <title>Oya Chop: Register</title>
     <link rel="stylesheet" href="/public/css/register.css">
-    <style>
-    .alertify-notifier {
-    top: 10px;
-    right: 10px;
-    }
-    .alertify-notifier .ajs-success {
-    font-size: 14px;
-    font-weight: 700;
-    color: #FFF;
-    }
-    .alertify-notifier .ajs-error {
-    font-size: 14px;
-    font-weight: 700;
-    color: #FFF;
-    }
-    </style>
 </head>
 <body>
     <main>
@@ -37,17 +21,17 @@
                 <h3 class="register-title">Welcome to <span>OyaChop!</span></h3>
 
                 <label for="first-name"></label>
-                <input class="input-box" type="text" name="firstname" id="firstname" placeholder="Your First Name" >
+                <input class="input-box" type="text" name="firstname" id="firstname" placeholder="Your First Name" required>
 
                 <label for="last-name"></label>
-                <input class="input-box" type="text" name="lastname" id="lastname" placeholder="Your Last Name" >
+                <input class="input-box" type="text" name="lastname" id="lastname" placeholder="Your Last Name" required>
 
                 <label for="email"></label>
-                <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" >
+                <input class="input-box" type="email" name="email" id="email" placeholder="Your Email address" required>
 
                 <label id="gender" for="gender">Gender:</label>
                 <div class="custom-select" >
-                    <select id="gender" class="input-box">
+                    <select id="gender" class="input-box" required>
                         <option value="" checked>--Select--</option>
                         <option value="male" name="male">Male</option>
                         <option value="female" name="female">Female</option>
@@ -55,16 +39,20 @@
                 </div>
 
                 <label for="phone_number"></label>
-                <input class="input-box" type="text" name="phone_number" id="phone_number" placeholder="Your phone number" >
+                <input class="input-box" type="tel" name="phone_number" id="phone_number" placeholder="Your phone number" required>
 
                 <label for="address"></label>
-                <input class="input-box" type="text" name="delivery_address" id="delivery_address" placeholder="Your Delivery address" >
+                <input class="input-box" type="text" name="delivery_address" id="delivery_address" placeholder="Your Delivery address" required>
 
-                <label for="pass"></label>
-                <input class="input-box" type="password" name="password" id="password" placeholder="Your Password" >
+                <div class="passwordDiv">
+                    <label for="pass"></label>
+                    <input class="input-box" type="password" name="password" id="password" placeholder="Your Password" required>
+                    <img id="passwordIcon" src="../img/eye-close.svg" onclick="togglePassword()">
+                </div>
+                
 
                 <label id="profileImage" for="profileImg">Profile Image:</label>
-                <input class="input-box" type="file" name="picture" id="picture" >
+                <input class="input-box" type="file" name="picture" id="picture" required>
     
                 <button type="submit" name="submit" class="btn-input"  id="sub-btn" > SIGN UP </button>
     
@@ -75,7 +63,6 @@
             </section>
         </form>
     </main>
-
 
     <script>
 
@@ -123,7 +110,9 @@
 
         
     </script>
-
-    <script src="../alertifyjs/js/alertify.min.js"></script>
+    
+    <!-- Alertify script -->
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+    <script src="/public/js/password.js"></script>
 </body>
 </html>

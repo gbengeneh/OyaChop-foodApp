@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+        <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>OyaChop | Cart</title>
     
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
@@ -26,26 +28,50 @@
               </div>
         
               <nav class="navbar">
-                  <ul class="nav-menu">
-                      <li class="nav-item">
-                          <img src="../img/dashboard/home.svg" alt="">
-                          <a href="dashboard.html">Dashboard</a>
-                      </li>
-                      <li class="nav-item">
-                          <img src="../img/dashboard/profile.svg" alt="">
-                          <a href="profile.html">Your Profile</a>
-                      </li>
-                      <li class="nav-item">
-                          <img src="../img/dashboard/order.svg" alt="">
-                          <a href="order.html">Orders</a>
-                      </li>
-                      <li class="nav-item">
-                          <img src="../img/dashboard/bookmark.svg" alt="">
-                          <a href="cart.html">Your Cart <span class="cartQuantity">1</span></a>
-                      </li>
-                  </ul>
-              </nav>
-              
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <div class="nav-item-div">
+                            <img src="../img/dashboard/home.svg" class="nav-item-img" alt="">
+                            <a href="dashboard.html">Dashboard</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-item-div">
+                            <img src="../img/dashboard/profile.svg" class="nav-item-img" alt="">
+                            <a href="profile.html">Your Profile</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-item-div">
+                            <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
+                            <a href="order.html">Orders<span class="orderQuantity">0</span></a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-item-div">
+                            <img src="../img/dashboard/cart.svg" class="nav-item-img" alt="">
+                            <a href="cart.html">Your Cart<span class="cartQuantity" data-product-index="1">0</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+              <div class="bottomDiv">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="support.html">
+                            <i class="fa-solid fa-circle-question"></i>
+                            <span>Help & Support</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="landing.html">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+              </div>
           </div>
       </aside>
 
@@ -55,8 +81,17 @@
     <!-- cart item details -->
 
     <main class="main-container cart-page">
-      <h1 class="cart-heading">Your Cart<span class="cartQuantity">1</span></h1>
-      <table>
+      <div class="cartHeading-div">
+        <h1 class="cart-heading">Your Cart<span class="cartQuantity" data-product-index="1">0</span></h1>
+        <div class="cart-reset">
+          <h1 class="cart-reset-title">Reset Cart</h1>
+          <i class="fa-solid fa-trash"></i>
+        </div>
+        
+      </div>
+      
+      <div id="cartActive" >
+         <table>
         <tr>
           <th>Item</th>
           <th>Qty</th>
@@ -65,33 +100,46 @@
         </tr>
 
         <tbody class="cart-items">
-          <!-- render cart items here -->
+          <!--render cart items here -->
 
 
         </tbody>
         
-      </table>
-
-      <div class="total-price">
-        <table>
-          <tr>
-            <td>Sub-total:</td>
-            <td id="subtotal">N 00000</td>
-          </tr>
-          <tr>
-            <td>Tax:</td>
-            <td id="tax">N 000.00</td>
-          </tr>
-          <tr>
-            <td>Total:</td>
-            <td id="total">N 00000.00</td>
-          </tr>
         </table>
+
+        <div class="total-price">
+          <table>
+            <tr>
+              <td>Sub-total:</td>
+              <td id="subtotal">N 00000</td>
+            </tr>
+            <tr>
+              <td>Tax:</td>
+              <td id="tax">N 000.00</td>
+            </tr>
+            <tr>
+              <td>Total:</td>
+              <td id="total">N 00000.00</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="checkout">
+          <a href="checkout.html" class="checkout-link">Checkout</a>
+        </div>
+      </div>
+      <div id="cartEmpty">
+        <div class="cartEmptyImageDiv">
+          <img src="../img/empty-cart.png" class="cartEmptyImage" alt="empty cart">
+        </div>
+        
+        <div class="cartEmptyDesc">
+          <p>Cart is Empty, Go to Dashboard to add Food Items to Cart.</p>
+
+          <a href="dashboard.html" class="cartEmptyLink">Go to Dashboard</a>
+        </div>
       </div>
       
-      <div class="checkout">
-        <a href="checkout.html" class="checkout-link">Checkout</a>
-      </div>
     </main>
   </section>
 

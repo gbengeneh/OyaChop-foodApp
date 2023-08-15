@@ -1,0 +1,125 @@
+/* Help & Support Page Css */
+.supportContainerTop{
+  padding: 30px;
+  display: flex;
+  vertical-align: top;
+  /* gap: 30px; */
+}
+.supportLeft{
+  flex-basis: 60%;
+}
+.supportHeading{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.supportTopics{
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto; 
+  grid-template-rows: auto auto; 
+}
+.supportIcon{
+  color: #00302E;
+}
+.supportOptions{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  cursor: pointer;
+}
+.supportOptions:hover > .supportIcon{
+  transform: scale(1.5);
+  transition: all 0.5s ease-in-out;
+}
+
+.supportRight{
+  flex-basis: 40%;
+  padding: 20px;
+  border-radius: 5px;
+}
+.supportQuestions{
+  padding: 10px;
+}
+.fAQuestions{
+  padding-bottom: 10px;
+}
+.accordionQuestion{
+  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  height: 60px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.questions{
+  color: #000;
+  font-weight: 600;
+}
+.answer, .supportOptionDesc{
+  color: grey;
+}
+.answer{
+  padding: 10px;
+  display: none;
+}
+
+.supportContainertBottom1{
+  max-width: 300px;
+  margin-top: 50px;
+}
+.supportContainertBottom2{
+  max-width: 300px;
+  margin-top: 50px;
+  display: none;
+}
+.contactSupportHeading{
+  padding-bottom: 10px;
+}
+.contactSupportBtn{
+  background: #00302E;
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  margin-top: 10px;
+  height: 50px;
+  cursor: pointer;
+}
+
+@media (max-width:536px){
+  .supportContainerTop{
+    padding: 10px;
+    padding-top: 50px;
+    flex-direction: column;
+  }
+  .supportLeft{
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+  .supportTopics{
+    padding-top: 20px;
+    display: block;
+  }
+  .supportOptions{
+    padding: 10px;
+  }
+  
+  .supportRight{
+    flex-basis: 100%;
+    padding: 10px;
+  }
+  
+  .supportContainertBottom1{
+    display: none;
+  }
+  .supportContainertBottom2{
+    display: block;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+}

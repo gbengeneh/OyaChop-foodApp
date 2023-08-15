@@ -42,7 +42,7 @@ if(isset($_FILES['picture'])){
 
     $picture = $_FILES['picture'];
     $allowed_picture_types = array('image/jpeg', 'image/png', 'image/jpg');
-    $max_file_size = 1000000; //  MB
+    $max_file_size = 5000000; //  MB
  
 if(in_array($picture['type'], $allowed_picture_types) && $picture['size'] <= $max_file_size)
 {

@@ -2,6 +2,9 @@
 require 'cors.php';
 require 'db_con.php';
 
+// Start or resume the PHP session
+session_start();
+
 $request_body = file_get_contents("php://input");
 
 $sql = "SELECT * FROM tbl_food";

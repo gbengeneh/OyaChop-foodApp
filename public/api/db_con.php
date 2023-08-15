@@ -1,4 +1,7 @@
 <?php
+// Start or resume the PHP session
+session_start();
+
 try{
 
 $db_con = mysqli_connect("localhost","root","","oya_chop");
