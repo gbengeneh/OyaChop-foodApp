@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap"
+        rel="stylesheet">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.css" />
     <title>OyaChop | Home</title>
-    
+
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
     <link rel="stylesheet" href="/public/css/dashboard.css">
-    
+
 </head>
+
 <body>
     <section class="body-content">
-        
+
         <div class="navigation">
             <div class="menu-icon">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
+
             <aside class="sidebar-container">
                 <div class="side-content">
                     <div class="logo-container">
                         <h1 class="logo">Oya Chop</h1>
                     </div>
-              
+
                     <nav class="navbar">
                         <ul class="nav-menu">
                             <li class="nav-item">
@@ -76,7 +81,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </aside>
         </div>
@@ -87,6 +92,13 @@
                     <div class="greeting">
                         <h2>Hello, <span class="user-name">User!</span></h2>
                         <p>What delicious meal are you having today?</p>
+
+                    </div>
+                    <div id="login-message" class="loginMessage"></div>
+
+                    <div class="cartSignal">
+                        <img src="../img/dashboard/cart-logo.svg" alt="cart" class="cart-logo">
+                        <span class="cart-num cartQuantity">0</span>
                     </div>
 
                     <div class="user-content">
@@ -146,13 +158,16 @@
         </main>
     </section>
 
-  <!-- Hamburger menu -->
+    <!-- Hamburger menu -->
     <script src="/public/js/dashboard.js"></script>
-    
     <!-- javascript for app functionalities -->
     <script src="/public/js/app.js"></script>
-    
+    <script>
+        getCartQuantity()
+    </script>
+
     <!-- Alertify script -->
     <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
 </body>
+
 </html>

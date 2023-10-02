@@ -14,6 +14,28 @@ sideBar.classList.remove("active")
 
 
 
+// Function to display messages ON DASHBORD
+function displayLoginMessage(loginMessage, isSuccess) {
+  const messageWrap = document.getElementById('login-message');
+  messageWrap.textContent = loginMessage;
+  messageWrap.classList.toggle('success', isSuccess);
+  messageWrap.classList.toggle('error', !isSuccess);
+  setTimeout(() => {
+    messageWrap.textContent = '';
+    messageWrap.classList.remove('success', 'error');
+  }, 5000);
+}
+
+//handle success message after successful login
+document.addEventListener('DOMContentLoaded', function() {
+  const loginSuccess = localStorage.getItem('login_success');
+  if (loginSuccess === 'true') {
+      displayLoginMessage('Login Successful', true)
+      localStorage.removeItem('login_success'); 
+  }
+});
+
+
 // Handle order status selection
 
 const orderStatus = document.querySelectorAll(".orderStatus");

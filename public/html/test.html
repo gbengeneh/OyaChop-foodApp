@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .formContainer {
+      padding: 15px 20px;
+    }
+
+    .formHeading {
+      color: #015c2e;
+      font-weight: 500;
+      margin: auto 20px;
+    }
+
+    form {
+      padding: 15px auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .formInput {
+      padding: 10px;
+      margin: 15px 20px;
+      width: 40%;
+      outline: none;
+      font-size: 18px;
+      border: 1px solid #ddd;
+    }
+
+    .formInput::placeholder {
+      color: #acaaaa;
+    }
+
+    textarea {
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      margin: 10px 20px;
+    }
+
+    textarea::placeholder {
+      color: #acaaaa;
+    }
+
+    .formBtn {
+      padding: 10px;
+      font-size: 16px;
+      background: #00302E;
+      color: #ffffff;
+      width: 150px;
+      margin-left: auto;
+    }
+
+    .formBtn {
+      padding: 10px;
+      font-size: 16px;
+      background: #00302E;
+      color: #ffffff;
+      width: 150px;
+      margin: auto 20px;
+      margin-left: auto;
+      cursor: pointer;
+      border-radius: 7px;
+    }
+
+    .formBtn:hover {
+      background: #015c2e;
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="formContainer">
+    <h1 class="formHeading">Shipping Address</h1>
+    <form>
+      <div class="subFormGroup">
+        <input class="formInput" id="firstname" value="" name="firstname" type="text" placeholder="First Name*">
+        <input class="formInput" id="lastname" value="" name="lastname" type="text" placeholder="Last Name*">
+        <input class="formInput" id="phone" value="" name="phone" type="text" placeholder="Phone*">
+      </div>
+
+
+      <textarea name="address" type="text" value="" id="address" cols="30" rows="7" placeholder="Address*"></textarea>
+
+      <div class="subFormGroup">
+        <input class="formInput" id="apartment" value="" name="apartment" type="text"
+          placeholder="Apartment/Suite etc*">
+        <input class="formInput" id="city" value="" name="city" type="text" placeholder="City/Town*">
+      </div>
+
+      <button class="formBtn">Save</button>
+
+    </form>
+  </div>
+
+
+  <script>
+
+
+    //define a function to update the user delivery address from the database
+    function updateDeliveryAddress() {
+      const user_id = sessionStorage.getItem('user_id');
+
+      // select the user delivery address value from the input
+      const changeFirstname = document.getElementById("firstname");
+      const changeLastName = document.getElementById("lastname");
+      const changeAddress = document.getElementById("address");
+      const changePhone = document.getElementById("phone");
+      const addApartment = document.getElementById("apartment");
+      const addCity = document.getElementById("city");
+
+      console.log(changeFirstname, changeLastName, changePhone, changeAddress, addApartment, addCity)
+
+      console.log(changeFirstname.value,
+        changeLastName.value,
+        changeAddress.value,
+        changePhone.value,
+        addApartment.value,
+        addCity.value,)
+
+      // Prepare the data to be sent in the request
+      const requestData = {
+        user_id: user_id, // Add the user_id to the request data
+        firstname: changeFirstname.value,
+        lastname: changeLastName.value,
+        phone_number: changeAddress.value,
+        delivery_address: changePhone.value,
+        apart_suite: addApartment.value,
+        city_town: addCity.value,
+      };
+
+      fetch(`http://localhost/api/change_delivery_address.php?user_id=${user_id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData), // Send the request data as JSON 
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+    }
+
+
+
+    const submitBtn = document.querySelector('.formBtn');
+    submitBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      updateDeliveryAddress()
+      console.log('save clicked')
+    })
+
+  </script>
+</body>
+
+</html>

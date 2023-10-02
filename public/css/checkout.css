@@ -1,27 +1,36 @@
-.checkout-page{
+.main-wrap {
+  position: relative;
+}
+
+.checkout-page {
   display: flex;
   padding: 30px 50px;
   gap: 20px;
 }
-.shippingForm{
+
+.shippingForm {
   border: 1px solid #ddd;
-  flex-basis: 80%;
+  flex-basis: 60%;
   height: fit-content;
 }
-.formContainer{
+
+.formContainer {
   padding: 15px 20px;
 }
-.formHeading{
+
+.formHeading {
   color: #015c2e;
   font-weight: 500;
   margin: auto 20px;
 }
-form{
+
+form {
   padding: 15px auto;
   display: flex;
   flex-direction: column;
 }
-.formInput{
+
+.formInput {
   padding: 10px;
   margin: 15px 20px;
   width: 40%;
@@ -29,64 +38,108 @@ form{
   font-size: 18px;
   border: 1px solid #ddd;
 }
-.formInput::placeholder{
+
+.formInput::placeholder {
   color: #acaaaa;
 }
-textarea{
+
+textarea {
   padding: 10px;
   font-size: 18px;
   border: 1px solid #ddd;
   margin: 10px 20px;
 }
-textarea::placeholder{
+
+textarea::placeholder {
   color: #acaaaa;
 }
-.formBtn{
+
+.formBtn {
   padding: 10px;
   font-size: 16px;
   background: #00302E;
   color: #ffffff;
   width: 150px;
-  margin-left:auto;
+  margin-left: auto;
 }
-.formBtn{
+
+.formBtn {
   padding: 10px;
   font-size: 16px;
   background: #00302E;
   color: #ffffff;
   width: 150px;
   margin: auto 20px;
-  margin-left:auto;
+  margin-left: auto;
   cursor: pointer;
   border-radius: 7px;
 }
-.formBtn:hover{
+
+.formBtn:hover {
   background: #015c2e;
   color: #ffffff;
 }
-.paymentForm{
+
+.paymentForm {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+  /* justify-content: space-between; */
+}
+
+.orderContainer {
   border: 1px solid #ddd;
   height: fit-content;
 }
-.payOption{
-  margin-left: 30px;
-}
-.creditcards{
-  margin: 20px auto;
-}
-.paymentContainer{
+
+.orderContainerWrap {
   padding: 15px 20px;
 }
-.paymentHeading{
+
+.orderHeading {
+  color: #015c2e;
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+tr td:nth-child(1) {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.payOption {
+  margin-left: 30px;
+}
+
+.creditcards {
+  margin: 10px auto;
+  width: 100%;
+  display: none;
+}
+
+.paymentContainer {
+  border: 1px solid #ddd;
+  height: fit-content;
+  padding: 15px;
+}
+
+.paymentHeading {
   color: #015c2e;
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 10px;
 }
-.icons{
+
+.icons {
   width: 50px;
 }
-.payInput{
+
+.payInput {
   padding: 8px;
   width: 100%;
   margin: 15px 0;
@@ -94,22 +147,27 @@ textarea::placeholder{
   outline: none;
   border-bottom: 1px solid grey;
 }
-.payInput::placeholder{
+
+.payInput::placeholder {
   color: lightgray;
 }
-.cardIcons{
+
+.cardIcons {
   display: flex;
   align-items: center;
   gap: 30px;
 }
-.cardInfo{
+
+.cardInfo {
   display: flex;
   justify-content: space-between;
 }
-.sm{
+
+.sm {
   width: 30%;
 }
-.payBtn{
+
+.payBtn {
   height: 40px;
   width: 100%;
   margin-top: 25px;
@@ -117,53 +175,143 @@ textarea::placeholder{
   background: #00302E;
   color: #ffffff;
   font-size: 16px;
-  box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
-  -webkit-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
-  -moz-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+  box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
+  -webkit-box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
+  -moz-box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
   border-radius: 7px;
   cursor: pointer;
 }
-@media(max-width:550px){
-  .checkout-page{
+
+.modal-form {
+  max-width: 400px;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-container {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ddd;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.4);
+  height: 250px;
+  width: 100%;
+}
+
+.modal-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-icon {
+  width: 90px;
+  height: 90px;
+}
+
+.modal-msg {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.modal-msg-sm {
+  padding-bottom: 20px;
+}
+
+.modal-link {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #00302E;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+/* Styles for the password message container */
+.c-message {
+  position: fixed;
+  bottom: 30px;
+  left: 60%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Styles for success message */
+.c-message.success {
+  background-color: green;
+  color: white;
+  opacity: 1;
+}
+
+/* Styles for error message */
+.c-message.error {
+  background-color: red;
+  color: white;
+  opacity: 1;
+}
+
+@media(max-width:550px) {
+  .checkout-page {
     flex-direction: column;
     padding: 50px 10px;
   }
-  .shippingForm{
+
+  .shippingForm {
     flex-basis: 100%;
   }
-  .formContainer{
+
+  .formContainer {
     padding: 25px 10px;
   }
-  .subFormGroup{
+
+  .subFormGroup {
     display: flex;
     flex-direction: column;
   }
-  .formInput{
+
+  .formInput {
     margin: 10px auto;
     width: 100%;
     font-size: 15px;
   }
-  textarea{
+
+  textarea {
     font-size: 15px;
     /* margin: 10px; */
   }
-  .payOption{
+
+  .payOption {
     margin-left: 0;
   }
-  .paymentContainer{
+
+  .paymentContainer {
     padding: 15px 10px;
   }
-  .icons{
+
+  .icons {
     width: 40px;
   }
-  .cardInfo{
+
+  .cardInfo {
     display: flex;
     justify-content: space-between;
   }
-  .sm{
+
+  .sm {
     width: 30%;
   }
-  .payBtn{
+
+  .payBtn {
     height: 40px;
     width: 100%;
     margin-top: 25px;
@@ -171,10 +319,37 @@ textarea::placeholder{
     background: #00302E;
     color: #ffffff;
     font-size: 16px;
-    box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
-    -webkit-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
-    -moz-box-shadow: -1px 3px 20px -2px rgba(0,0,0,0.86);
+    box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
+    -webkit-box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
+    -moz-box-shadow: -1px 3px 20px -2px rgba(0, 0, 0, 0.86);
     border-radius: 7px;
     cursor: pointer;
+  }
+
+  .modal-form {
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal-container {
+    margin: 0;
+    height: 300px;
+    width: 100%;
+  }
+  .c-message {
+    width: 250px;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 }

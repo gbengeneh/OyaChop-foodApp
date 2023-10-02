@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap"
+        rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>OyaChop | Order</title>
@@ -12,108 +15,138 @@
     <link rel="stylesheet" href="/public/css/dashboard.css">
     <link rel="stylesheet" href="/public/css/order.css">
 </head>
+
 <body>
-  <section class="body-content">
-    <div class="navigation">
-      <div class="menu-icon">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-      </div>
-      <aside class="sidebar-container">
-          <div class="side-content">
-              <div class="logo-container">
-                  <h1 class="logo">Oya Chop</h1>
-              </div>
-        
-              <nav class="navbar">
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <div class="nav-item-div">
-                            <img src="../img/dashboard/home.svg" class="nav-item-img" alt="">
-                            <a href="dashboard.html">Dashboard</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-item-div">
-                            <img src="../img/dashboard/profile.svg" class="nav-item-img" alt="">
-                            <a href="profile.html">Your Profile</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-item-div">
-                            <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
-                            <a href="order.html">Orders<span class="orderQuantity">0</span></a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-item-div">
-                            <img src="../img/dashboard/cart.svg" class="nav-item-img" alt="">
-                            <a href="cart.html">Your Cart<span class="cartQuantity">0</span></a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-              <div class="bottomDiv">
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="support.html">
-                            <i class="fa-solid fa-circle-question"></i>
-                            <span>Help & Support</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="landing.html">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <span>Log Out</span>
-                        </a>
-                    </li>
-                </ul>
-              </div>
-          </div>
-      </aside>
-
-  </div>
-    
-
-    <!-- Order page -->
-
-    <main class="main-container">
-        <div class="order-page">
-            <div class="orderPageHeading">
-                <img class="order-logo" src="/public/img/transaction-order (1).svg" alt="order">
-                <h1 class="orderHeading">Orders</h1>
+    <section class="body-content">
+        <div class="navigation">
+            <div class="menu-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-            <div class="orderStatusDiv">
-                <button class="orderStatus active" data-name="all">All</button>
-                <button class="orderStatus" data-name="pending">Pending</button>
-                <button class="orderStatus" data-name="delivered">Delivered</button>
-            </div>
-            <div class="orderItemsWrap">
-                <div class="orderedItem">
-                    <div class="leftDiv">
-                        <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
-                        <div class="orderDetails">
-                            <h2 class="orderCode">Order #0001</h2>
-                            <p class="orderTitle">Eba with Efo Riro</p>
-                            <p class="orderUpdate">Status: <span>COMPLETED</span></p>
-                        </div>
+            <aside class="sidebar-container">
+                <div class="side-content">
+                    <div class="logo-container">
+                        <h1 class="logo" onclick="getOrder()">Oya Chop</h1>
                     </div>
-                    <div class="rightDiv">
-                        <small class="orderTime">10 mins ago</small>
-                        <h3 class="orderPrice">N 1200</h3>
+
+                    <nav class="navbar">
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/home.svg" class="nav-item-img" alt="">
+                                    <a href="dashboard.html">Dashboard</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/profile.svg" class="nav-item-img" alt="">
+                                    <a href="profile.html">Your Profile</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
+                                    <a href="order.html">Orders<span class="orderQuantity">0</span></a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="nav-item-div">
+                                    <img src="../img/dashboard/cart.svg" class="nav-item-img" alt="">
+                                    <a href="cart.html">Your Cart<span class="cartQuantity">0</span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="bottomDiv">
+                        <ul class="nav-menu">
+                            <li class="nav-item">
+                                <a href="support.html">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>Help & Support</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="landing.html">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <span>Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+
+        <!-- Order page -->
+
+        <main class="main-container">
+            <div class="order-page">
+                <div class="orderPageHeading">
+                    <img class="order-logo" src="/public/img/transaction-order (1).svg" alt="order">
+                    <h1 class="orderHeading">Orders</h1>
+                </div>
+                <div class="orderStatusDiv">
+                    <button class="orderStatus active" data-name="all">All</button>
+                    <button class="orderStatus" data-name="pending">Pending</button>
+                    <button class="orderStatus" data-name="delivered">Delivered</button>
+                </div>
+                <div class="orderItemsWrap">
+                    <div class="orderedItem">
+                        <div class="leftDiv">
+                            <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
+                            <div class="orderDetails">
+                                <h2 class="orderCode">Order #0001</h2>
+                                <p class="orderTitle">Eba with Efo Riro</p>
+                                <p class="orderUpdate">Status: <span>COMPLETED</span></p>
+                            </div>
+                        </div>
+                        <div class="rightDiv">
+                            <small class="orderTime">10 mins ago</small>
+                            <h3 class="orderPrice">N 1200</h3>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-      
-    </main>
-  </section>
 
-  <!-- Hamburger menu -->
-  <script src="/public/js/dashboard.js"></script>
-  
+
+        </main>
+    </section>
+
+    <!-- Hamburger menu -->
+    <script src="/public/js/dashboard.js"></script>
+    <!-- javascript for app functionalities -->
+    <script src="/public/js/app.js"></script>
+    <script>
+        // function getOrder() {
+
+        //     const user_id = sessionStorage.getItem('user_id');
+
+        //     fetch("http://localhost/api/order.php", {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({
+        //             user_id: user_id
+        //         }),
+        //     })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data);
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //         });
+        // }
+        // getOrder()
+        // getCartQuantity()
+        getCartQuantity()
+    </script>
+
 </body>
+
 </html>

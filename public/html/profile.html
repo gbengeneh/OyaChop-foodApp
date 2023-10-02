@@ -117,25 +117,37 @@
         
                     <form class="pass-form">
                         <div class="top">
-                            <label for="old-pass">Old Password</label>
-                            <input type="password" name="old-pass">
-        
+                            <div class="passwordUpdateDiv">
+                                <label for="old-pass">Old Password</label>
+                                <div class="passwordInputWrap">
+                                    <input type="password" class="passwordInput oldPassword" data-index="0" value="" name="old-pass">
+                                    <img class="passwordIcon" src="../img/eye-close.svg" data-index="0" onclick="togglePassword(this)">
+                                </div>
+                            </div>
                         </div>
                         <div class="bottom">
-                            <div>
+                            <div class="passwordUpdateDiv">
                                 <label for="new-pass">New Password</label>
-                                <input type="password" name="new-pass">
+                                <div class="passwordInputWrap">
+                                    <input type="password" class="passwordInput newPassword1" value="" data-index="1" name="new-pass">
+                                    <img class="passwordIcon" src="../img/eye-close.svg" data-index="1" onclick="togglePassword(this)">
+                                </div>
                             </div>
-                            <div>
+                            
+                            <div class="passwordUpdateDiv">
                                 <label for="con-pass">Confirm new password</label>
-                                <input type="password" name="con-pass">
+                                <div class="passwordInputWrap">
+                                    <input type="password" class="passwordInput newPassword2" value="" data-index="2" name="con-pass">
+                                    <img class="passwordIcon" src="../img/eye-close.svg" data-index="2" onclick="togglePassword(this)">
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
         
-                <button id="update-btn">Update</button>
+                <button id="update-btn" onclick="updatePassword()">Update</button>
 
+                <div id="passwordMessage" class="passwordMessage"></div>
             </div>
             
             
@@ -149,6 +161,24 @@
     <!-- Call getUser function when the profile page is loaded -->
     <script>
         getUser()
+        // getCartQuantity()
+        getCartQuantity(user_id)
+    </script>
+    <script>
+        // Handle hide or display password
+        function togglePassword(icon) {
+            const index = icon.getAttribute("data-index");
+            const passwordInput = document.querySelector(`.passwordInput[data-index="${index}"]`);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.src = "/public/img/eye-open.svg";
+            } else {
+                passwordInput.type = "password";
+                icon.src = "/public/img/eye-close.svg";
+            }
+        }
+        
     </script>
 </body>
 

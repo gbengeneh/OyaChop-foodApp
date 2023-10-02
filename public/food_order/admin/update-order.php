@@ -9,14 +9,14 @@
         <?php 
         
             //CHeck whether id is set or not
-            if(isset($_GET['id']))
+            if(isset($_GET['order_id']))
             {
                 //GEt the Order Details
-                $id=$_GET['id'];
+                $id=$_GET['order_id'];
 
                 //Get all other details based on this id
                 //SQL Query to get the order details
-                $sql = "SELECT * FROM tbl_order WHERE id=$id";
+                $sql = "SELECT * FROM orders,delivery_details,users,tbl_food WHERE order_id=$order_id";
                 //Execute Query
                 $res = mysqli_query($conn, $sql);
                 //Count Rows
@@ -146,7 +146,7 @@
                 $customer_address = $_POST['customer_address'];
 
                 //Update the Values
-                $sql2 = "UPDATE tbl_order SET 
+                $sql2 = "UPDATE orders,delivery_details SET 
                     qty = $qty,
                     total = $total,
                     status = '$status',

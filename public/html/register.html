@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../alertifyjs/css/alertify.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Dancing+Script&family=Pacifico&family=Poppins:wght@400;700&maxHeight=swap" rel="stylesheet">
-    <title>Oya Chop: Register</title>
+    <title>Oya Chop | Register</title>
     <link rel="stylesheet" href="/public/css/register.css">
 </head>
 <body>
@@ -15,6 +15,7 @@
             <div class="overlay"></div>
         </section>
         <form class="registerForm" id="myForm">
+            <div id="signup-message" class="signupMessage"></div>
             <section class="register-container">
                 <a href="landing.html" class="homelink" id="home">Home</a>
         
@@ -65,6 +66,18 @@
     </main>
 
     <script>
+        // Function to display success message
+        function displaySIgnUpMessage(signupMessage, isSuccess) {
+        const messageWrap = document.getElementById('signup-message');
+        messageWrap.textContent = signupMessage;
+        messageWrap.classList.toggle('success', isSuccess);
+        messageWrap.classList.toggle('error', !isSuccess);
+        setTimeout(() => {
+            messageWrap.textContent = '';
+            messageWrap.classList.remove('success', 'error');
+        }, 5000);
+        }
+
 
 
         const form = document.querySelector('#myForm');
@@ -96,13 +109,12 @@
             
             alertify.success(msg);
             document.getElementById('myForm').reset();
-            window.location.href = 'login.html'
 
-            // Wait for 3 seconds before redirecting
-            // setTimeout(() => {
-            //     window.location.href = 'login.html';
-            // }, 3000);
+            displaySIgnUpMessage('New User Created', true)
             
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2500);
         })
         }).catch(error =>{
             console.log(error)

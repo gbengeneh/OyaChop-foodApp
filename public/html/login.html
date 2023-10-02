@@ -59,14 +59,16 @@
                 if(err === 'error'){
                 alertify.error(msg);
                 }else{
-
+                    // console.log(result)
                     const user_id = result.user_id;
                     
                         sessionStorage.setItem('user_id', user_id);
-
+                        localStorage.setItem('login_success', 'true');
                     window.location.href = 'dashboard.html';
-                    
+                    // window.location.href = 'test.html';
+
                 }
+                
             })
             .catch(function(error) {
                 console.error('Error:', error);

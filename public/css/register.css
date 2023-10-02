@@ -140,6 +140,32 @@ main {
     cursor: pointer;
 }
 
+.signupMessage {
+    position: fixed;
+    z-index: 999;
+    bottom: 10px;
+    right: 15%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  /* Styles for success message */
+  .signupMessage.success {
+    background-color: green;
+    color: white;
+    opacity: 1;
+  }
+  
+  /* Styles for error message */
+  .signupMessage.error {
+    background-color: red;
+    color: white;
+    opacity: 1;
+  }
 
 /* RESPONSIVE */
 @media screen and (max-width:950px) {
@@ -165,4 +191,7 @@ main {
         top: -10px;
         right: 50px;
     }
+    .signupMessage {
+        right: 2%;
+      }
 }

@@ -102,18 +102,37 @@ function getSubtotal($user_id, $food_id, $quantity) {
     echo json_encode(array("subtotal" => $subtotal));
 }
 
-// Function to get the total price of the cart
-function getTotalPrice($user_id,$food_id,$quantity) {
+// Function to get the total price with tax of items in the cart
+function getTotalPrice($user_id, $food_id, $quantity) {
     global $db_con;
 
+    // Calculate the total price without tax
     $get_price_query = "SELECT SUM(tbl_food.price * cart.quantity) AS total_price 
-    FROM cart INNER JOIN tbl_food ON cart.food_id = tbl_food.food_id WHERE cart.user_id='$user_id'";
+    FROM cart INNER JOIN tbl_food ON cart.food_id = tbl_food.id WHERE cart.user_id='$user_id'";
+    
     $get_price_result = mysqli_query($db_con, $get_price_query);
-    $row = mysqli_fetch_assoc($get_price_result);
+
+    if (!$get_price_result) {
+        echo json_encode(array("error" => "Database error: " . mysqli_error($db_con)));
+        return;
+    }
+
+    $row = mysqli_fetch_assoc($get_price_result); 
     $total_price = $row['total_price'];
 
-    echo json_encode(array("total_price" => $total_price));
+    // Calculate the total price with 10% tax
+    $total_price_with_tax = $total_price + ($total_price * 0.10);
+
+    // Create an array with both total prices
+    $response = array(
+        "total_price" => $total_price,
+        "total_price_with_tax" => $total_price_with_tax
+    );
+
+    // Encode and echo the response
+    echo json_encode($response);
 }
+
 
 // Function to update the quantity of an item in the cart
 function updateCart($user_id,$food_id,$quantity) {

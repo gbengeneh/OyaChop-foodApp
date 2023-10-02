@@ -21,7 +21,16 @@ if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['ph
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $delivery_address = filter_var($_POST['delivery_address'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    // Handle file uploads
+ 
+    $card_holder = $firstname . ' ' . $lastname;
+    // $first_num = substr(str_shuffle('12345678901234567890'), 10);
+    // $sec_num = substr(str_shuffle('098765432123'), 6);
+    $card_number = strval(random_int(10000000000000000, 999999999999999999));
+    $expire_month = rand(1,12);
+    $expire_year = rand(date('Y'), 2028);
+    $cvv = substr(str_shuffle(123456),3);
+    $amount = random_int(50000, 500000);
+
 
 //check if email already exist
     
@@ -42,7 +51,7 @@ if(isset($_FILES['picture'])){
 
     $picture = $_FILES['picture'];
     $allowed_picture_types = array('image/jpeg', 'image/png', 'image/jpg');
-    $max_file_size = 5000000; //  MB
+    $max_file_size = 1000000; //  MB
  
 if(in_array($picture['type'], $allowed_picture_types) && $picture['size'] <= $max_file_size)
 {
@@ -60,12 +69,24 @@ if(in_array($picture['type'], $allowed_picture_types) && $picture['size'] <= $ma
 }
    $enc_password = md5($password);
 
-    $sql = "INSERT INTO users (firstname, lastname, gender, phone_number, email, delivery_address, password, picture) 
-    VALUES('$firstname', '$lastname', '$gender', '$phone_number', '$email','$delivery_address', '$enc_password', '$picture_file_path')";
+    $sql = "INSERT INTO users (firstname, lastname, email, gender, phone_number,  delivery_address, password, picture) 
+    VALUES('$firstname', '$lastname','$email', '$gender', '$phone_number', '$delivery_address', '$enc_password', '$picture_file_path')";
 
     $result = $db_con->query($sql);
 
 if($result){
+
+    $user_id = $db_con->insert_id;
+    $closest_landmark = 'Null';
+
+
+    $sql1 = "INSERT INTO pay_gateway (user_id,card_holder, card_number, expire_month, expire_year, cvv, amount)
+     VALUES('$user_id','$card_holder', '$card_number', '$expire_month', '$expire_year', '$cvv', '$amount')";
+    $result1 = $db_con->query($sql1);
+
+    $sql3 = "INSERT INTO delivery_details (user_id, firstname, lastname, phone_number, closest_landmark, delivery_address)
+     VALUES('$user_id', '$firstname', '$lastname', '$phone_number', '$closest_landmark', '$delivery_address')";
+     $result3 = $db_con->query($sql3);
 
     $response = json_encode(['status'=>'success', 'code' => '200','message'=> 'Signup Successful']);
     echo $response;

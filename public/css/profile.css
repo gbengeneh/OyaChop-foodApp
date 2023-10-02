@@ -82,17 +82,19 @@
 .pass-form div.top {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
 }
 
-.pass-form div.bottom {
+/* .pass-form div.bottom {
     display: flex;
     gap: 20px;
+} */
+.top div{
+    width: 100%;
 }
-
 .bottom div {
-    width: 40%;
-    display: flex;
+    width: 100%;
+    display: inline-block;
     flex-direction: column;
 }
 .disabled{
@@ -122,7 +124,61 @@ input {
     font-weight: 600;
     cursor: pointer;
 }
+.passwordInputWrap{
+    position: relative;
+    display: flex;
+}   
+.passwordUpdateDiv{
+    max-width: 30%;
+}
+.passwordUpdateDiv:nth-child(1){
+    margin-right: 20px;
+}
+.passwordInput{
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+.passwordIcon{
+    width: 20px;
+    right: 10px;
+    top: 20%;
+    /* transform: translateY(-50%); */
+    cursor: pointer;
+    position: absolute;
+}
+/* Styles for the password message container */
+.passwordMessage {
+    position: fixed;
+    bottom: 30px;
+    left: 60%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 
+/* Styles for success message */
+.passwordMessage.success {
+    background-color: green;
+    color: white;
+    opacity: 1;
+}
+
+/* Styles for error message */
+.passwordMessage.error {
+    background-color: red;
+    color: white;
+    opacity: 1;
+}
 
 @media(max-width:536px) {
     .navigation .sidebar-container {
@@ -185,6 +241,7 @@ input {
         margin-bottom: 20px;
         /* float: right; */
     }
+    
     .profile-div{
         display: flex;
         align-items: center;
@@ -210,7 +267,9 @@ input {
         padding: 10px;
         width: 100%;
     }
-
+    .passwordUpdateDiv{
+        max-width: 100%;
+    }
     .bottom div {
         width: 100%;
     }
@@ -222,5 +281,18 @@ input {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .passwordMessage {
+        position: fixed;
+        width: 90%;
+        bottom: 20px;
+        left: 60%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s;
     }
 }

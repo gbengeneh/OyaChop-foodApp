@@ -16,6 +16,28 @@ font-family: 'Poppins', sans-serif; */
   --white:#FFFFFF;
   --footer: #0B0D17;
 }
+
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+  width: 14px; /* width of the scrollbar */
+}
+
+/* Style the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Style the handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: var(--cream);
+  border-radius: 5px;
+}
+
+/* Style the handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 body{
   width: 100%;
 }
@@ -27,14 +49,30 @@ main{
 }
 section{
   padding-top: 3%;
-  padding-bottom: 3%;
+  padding-bottom: 1%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-image {
+  animation: rotate 20s linear infinite; 
+  box-shadow: -1px 4px 33px -5px rgba(0,0,0,1);
+  -webkit-box-shadow: -1px 4px 33px -5px rgba(0,0,0,1);
+  -moz-box-shadow: -1px 4px 33px -5px rgba(0,0,0,1);
 }
 
 nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding: 10px;
   position: fixed;
   background: #00302E;
   width: 100%;
@@ -65,8 +103,8 @@ nav{
 }
 #home{
   color: var(--cream);
-  
 }
+
 #signupbtn{
   background: #E2B887;
   padding: 7px 15px;
@@ -101,6 +139,20 @@ nav{
   align-items: center;
   justify-content: space-around;
 }
+.homeheading{
+  animation-delay: 0.9s;
+}
+.anim{
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveup 0.5s linear forwards;
+}
+@keyframes moveup {
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 
 .col-1 h1{
   color: var(--white);
@@ -119,16 +171,20 @@ nav{
   padding-bottom: 20px;
   line-height: 1.6;
 }
-.col-1 #homeImg{
+.col-1-img #homeImg{
   width: 400px;
   height: 400px;
   border-radius: 50%;
 }
 
 #icon-logo{
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   margin-right: 5px;
+}
+
+.app-link{
+  animation-delay: 1.3s;
 }
 
 .app-link button small{
@@ -145,6 +201,7 @@ nav{
   border-radius: 5px;
   cursor: pointer;
   margin-right: 20px;
+  padding: 8px;
 }
 /* /////////////////////////////////////////////////////////////////////////////////// */
 .heading{
@@ -304,6 +361,7 @@ footer{
   border-radius: 5px;
   cursor: pointer;
   width: 120px;
+  padding: 8px;
 }
 @media(max-width:536px){
   body{
@@ -363,7 +421,13 @@ footer{
     padding-top: 10%;
   }
   .col-1{
+    padding-bottom: 50px;
+  }
+  .col-1-img{
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .col-1 .paragraph{
     max-width: 100%;
@@ -374,9 +438,9 @@ footer{
   .col-1 h1 span{
     font-size: 40px;
   } */
-  .col-1 #homeImg{
-    width: 100%;
-    height: 350px;
+  .col-1-img #homeImg{
+    width: 250px;
+    height: 250px;
   }
            /* ///////////////////////////////////////////////////////////////////////////////   */
 
@@ -393,8 +457,8 @@ footer{
     padding-bottom: 30px;
   }
   .display-img{
-    width: 50%;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
   }
            /* ///////////////////////////////////////////////////////////////////////////////   */
