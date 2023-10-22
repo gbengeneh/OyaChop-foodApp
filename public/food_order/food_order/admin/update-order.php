@@ -132,30 +132,30 @@
             {
                 //echo "Clicked";
                 //Get All the Values from Form
-                $id = $_POST['id'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
+                // $id = $_POST['id'];
+                // $price = $_POST['price'];
+                // $qty = $_POST['qty'];
 
-                $total = $price * $qty;
+                // $total = $price * $qty;
 
                 $status = $_POST['status'];
 
-                $firstname = $_POST['firstname'];
-                $lasstname = $_POST['lastname'];
-                $customer_contact = $_POST['phone_number'];
-                $customer_email = $_POST['email'];
-                $customer_address = $_POST['delivery_address'];
+                // $firstname = $_POST['firstname'];
+                // $lasstname = $_POST['lastname'];
+                // $customer_contact = $_POST['phone_number'];
+                // $customer_email = $_POST['email'];
+                // $customer_address = $_POST['delivery_address'];
 
                 //Update the Values
-                $sql2 = "UPDATE orders,delivery_details,users SET 
-                    qty = $qty,
-                    total = $total,
-                    status = '$status',
-                    firstname = '$firstname',
-                     lastname= '$lastname',                   
-                    customer_contact = '$phone_number',
-                    customer_email = '$email',
-                    customer_address = '$delivery_address'
+                $sql2 = "UPDATE orders SET 
+                    -- qty = $qty,
+                    -- total = $total,
+                    status = '$status'
+                    -- firstname = '$firstname',
+                    --  lastname= '$lastname',                   
+                    -- customer_contact = '$phone_number',
+                    -- customer_email = '$email',
+                    -- customer_address = '$delivery_address'
                     WHERE order_id=$order_id
                 ";
 
