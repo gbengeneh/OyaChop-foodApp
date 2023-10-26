@@ -4,10 +4,7 @@ require 'cors.php';
 require 'db_con.php';
 
 $body = json_decode(file_get_contents('php://input'));
-// $user_id = $body->user_id;
-
-$user_id = 11; // Assuming a user ID, replace this with your desired user ID handling logic
-$user_id = intval($user_id);
+$user_id = $_GET['user_id'];
 
 $query = "SELECT tbl_food.id, tbl_food.title, tbl_food.image_name,tbl_food.price, status,quantity, order_date
           FROM orders

@@ -27,7 +27,7 @@
             <aside class="sidebar-container">
                 <div class="side-content">
                     <div class="logo-container">
-                        <h1 class="logo" onclick="getOrder()">Oya Chop</h1>
+                        <h1 class="logo">Oya Chop</h1>
                     </div>
 
                     <nav class="navbar">
@@ -47,7 +47,7 @@
                             <li class="nav-item">
                                 <div class="nav-item-div">
                                     <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
-                                    <a href="order.html">Orders<span class="orderQuantity">0</span></a>
+                                    <a href="order.html">Orders</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -96,18 +96,7 @@
                 </div>
                 <div class="orderItemsWrap">
                     <div class="orderedItem">
-                        <div class="leftDiv">
-                            <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
-                            <div class="orderDetails">
-                                <h2 class="orderCode">Order #0001</h2>
-                                <p class="orderTitle">Eba with Efo Riro</p>
-                                <p class="orderUpdate">Status: <span>COMPLETED</span></p>
-                            </div>
-                        </div>
-                        <div class="rightDiv">
-                            <small class="orderTime">10 mins ago</small>
-                            <h3 class="orderPrice">N 1200</h3>
-                        </div>
+                        <!-- render order items here -->
                     </div>
                 </div>
             </div>
@@ -121,29 +110,7 @@
     <!-- javascript for app functionalities -->
     <script src="/public/js/app.js"></script>
     <script>
-        // function getOrder() {
-
-        //     const user_id = sessionStorage.getItem('user_id');
-
-        //     fetch("http://localhost/api/order.php", {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({
-        //             user_id: user_id
-        //         }),
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log(data);
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //         });
-        // }
-        // getOrder()
-        // getCartQuantity()
+        getOrder()
         getCartQuantity()
     </script>
 
