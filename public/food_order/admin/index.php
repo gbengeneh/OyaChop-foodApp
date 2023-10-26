@@ -68,7 +68,9 @@
                     <?php 
                            
                            // Create SQL Query to Get Total Revenue Generated
-                           $sql4 = "SELECT SUM(food_price * quantity) AS total_revenue FROM orders WHERE status='Delivered'";
+                           $sql4 = "SELECT tbl_food.price, SUM(price * quantity) AS total_revenue FROM orders
+                           INNER JOIN tbl_food ON orders.food_id = tbl_food.id
+                           WHERE status='Delivered'";
                            
                            // Execute the Query
                            $res4 = mysqli_query($conn, $sql4);

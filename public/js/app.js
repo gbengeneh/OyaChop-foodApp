@@ -56,7 +56,7 @@ function handleCategorySelection(event) {
 // Render product items
 function renderProductItems(products) {
   if (productsEl) {
-    productsEl.innerHTML = "";
+     
 
     products.forEach((product) => {
       const productItem = createProductItemMarkup(product);
@@ -760,8 +760,8 @@ function updateDeliveryAddress() {
       user_id: user_id, // Add the user_id to the request data
       firstname: changeFirstname.value,
       lastname: changeLastName.value,
-      phone_number: changeAddress.value,
-      delivery_address: changePhone.value,
+      phone_number: changePhone.value,
+      delivery_address: changeAddress.value,
       closest_landmark: addLandmark.value,
     };
 
@@ -900,14 +900,7 @@ function viewDeliveryDetails() {
 }
 
 
-// // select the user delivery address value from the input
-// const changeFirstname = document.getElementById("firstname");
-// const changeLastName = document.getElementById("lastname");
-// const changeAddress = document.getElementById("address");
-// const changePhone = document.getElementById("phone");
-// const addLandmark = document.getElementById("landmark");
-
-function getOrder(){
+function getOrder() {
   if (isOrderPage) {
     const user_id = sessionStorage.getItem('user_id');
 
@@ -916,10 +909,100 @@ function getOrder(){
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        user_id: user_id,
+      }),
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // Extract orders from the fetched data
+        let orders = data;
+        console.log(orders)
+        const ordersEl = document.querySelector(".orderItemsWrap");
+        if (ordersEl) {
+          ordersEl.innerHTML = "";
+
+          // Loop through the orders array and render each order
+          orders.forEach(order => {
+            const orderItem = createOrderMarkup(order);
+            ordersEl.insertAdjacentHTML("beforeend", orderItem)
+          });
+
+        }
+
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+}
+
+
+// Create HTML markup for a product item
+function createOrderMarkup(order) {
+  return `
+  <div class="orderedItem">
+  <div class="leftDiv">
+      <img class="orderImage" src="http://localhost/food_order/images/food/${order.image_name}" alt="">
+      <div class="orderDetails">
+          <h2 class="orderCode">Order #00${order.food_id}</h2>
+          <p class="orderTitle">${order.title}</p>
+          <p class="orderUpdate">Status: <span>${order.status}</span></p>
+      </div>
+  </div>
+  <div class="rightDiv">
+      <small class="orderTime">${order.time_diff}</small>
+      <h3 class="orderPrice">N ${order.total}</h3>
+  </div>
+</div>
+  `;
+}
+
+
+function formatCardNumber(cardNumber) {
+  // Remove any existing spaces or non-numeric characters
+  cardNumber = cardNumber.replace(/\D/g, '');
+
+  // Insert a space after every 4 digits
+  return cardNumber.replace(/(\d{4})/g, '$1 ');
+}
+
+
+function viewCardDetails() {
+  if (isCheckoutPage) {
+    const user_id = sessionStorage.getItem('user_id');
+
+    fetch(`http://localhost/api/get_card_details.php?user_id=${user_id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user_id,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        const atmDetails = data.card_details[0]
+        console.log(atmDetails)
+
+        //select variables
+        const cardHolder = document.querySelector('.atm-name');
+        const cardNumberValue = formatCardNumber(atmDetails.card_number);
+        const cardNumber = document.querySelector('.atmNumber');
+        const expiryMonth = document.querySelector('.atm-month');
+        const expiryYear = document.querySelector('.atm-year');
+        const cardCvv = document.querySelector('.atm-cvv');
+        const cardAmount = document.querySelector('.amount');
+
+        //equate variable to data from backend
+        cardHolder.textContent = atmDetails.card_holder
+        cardNumber.textContent = cardNumberValue
+        expiryMonth.textContent = atmDetails.expire_month
+        expiryYear.textContent = atmDetails.expire_year
+        cardCvv.textContent = atmDetails.cvv
+        cardAmount.textContent = atmDetails.amount
       })
       .catch(error => {
         console.error('Error:', error);

@@ -95,7 +95,7 @@ if(empty($data->card_number)){
 
    $trans_id = substr(str_shuffle('abcdefgh1234567890'), 11);
 
-   $trans_status = 'Pending';
+   $trans_status = 'Ordered';
 
    $order_date = date('Y-m-d H:i:s');
 
@@ -128,27 +128,27 @@ $ship_query = $db_con->query($ship_details);
 
 $ship_result = $ship_query->fetch_assoc();
 
-$fullname = $ship_result['firstname'] .' '. $ship_result['lastname'];
+// $fullname = $ship_result['firstname'] .' '. $ship_result['lastname'];
 
-$phone_number = $ship_result['phone_number'];
+// $phone_number = $ship_result['phone_number'];
 
-$closest_landmark = $ship_result['closest_landmark'];
+// $closest_landmark = $ship_result['closest_landmark'];
 
-$delivery_address = $ship_result['delivery_address']; 
+// $delivery_address = $ship_result['delivery_address']; 
 
-$sql_price = "SELECT * FROM tbl_food WHERE id = '$food_id[$i]'";
+// $sql_price = "SELECT * FROM tbl_food WHERE id = '$food_id[$i]'";
 
-$query_price = $db_con->query($sql_price);
+// $query_price = $db_con->query($sql_price);
 
-$row_price = $query_price->fetch_assoc();
+// $row_price = $query_price->fetch_assoc();
 
-$food_price = $row_price["price"];
+// $food_price = $row_price["price"];
 
 // // Calculate the delivery time (for example, adding 30 minutes to the current time)
 // $estimated_delivery_time = date('Y-m-d H:i:s', strtotime('+30 minutes'));
 
-$sql = "INSERT INTO orders (user_id, id, quantity, transaction_id, fullname, phone_number, closest_landmark, delivery_address, order_date, status, food_price)
-        VALUES ('$user_id', '".$food_id[$i]."', '".$quantity[$i]."', '$trans_id', '$fullname', '$phone_number', '$closest_landmark', '$delivery_address', '$order_date', '$trans_status', $food_price)";
+$sql = "INSERT INTO orders (user_id, food_id, quantity, transaction_id, order_date, status)
+        VALUES ('$user_id', '".$food_id[$i]."', '".$quantity[$i]."', '$trans_id', '$order_date', '$trans_status')";
 
 $query = $db_con->query($sql);
 

@@ -56,7 +56,7 @@ users.delivery_address AS customer_address*/
                     // Orders Available
                     while ($row = mysqli_fetch_assoc($res)) {
                         // Fetch data from the result set
-                        $id=$row['order_id'];
+                        $order_id=$row['order_id'];
                         $food_name = $row['title'];
                         $food_price = $row['price'];
                         $food_qty = $row['quantity'];
@@ -82,8 +82,8 @@ users.delivery_address AS customer_address*/
                             <td><?php echo $nearest_landmark; ?></td>
                             <td><?php echo $delivery_address; ?></td>
                             <td>
-                                <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>"class="btn-secondary">Update Order</a>
-                               
+                                <a href="<?php echo SITEURL; ?>admin/update-order.php?order_id=<?php echo $order_id; ?>"class="btn-secondary">Update Order</a>
+                                
                             </td>
                         </tr>
                         <?php

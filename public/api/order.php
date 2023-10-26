@@ -6,7 +6,7 @@ require 'db_con.php';
 $body = json_decode(file_get_contents('php://input'));
 // $user_id = $body->user_id;
 
-$user_id = 10; // Assuming a user ID, replace this with your desired user ID handling logic
+$user_id = 11; // Assuming a user ID, replace this with your desired user ID handling logic
 $user_id = intval($user_id);
 
 $query = "SELECT tbl_food.id, tbl_food.title, tbl_food.image_name,tbl_food.price, status,quantity, order_date
@@ -14,7 +14,11 @@ $query = "SELECT tbl_food.id, tbl_food.title, tbl_food.image_name,tbl_food.price
           INNER JOIN tbl_food ON orders.food_id = tbl_food.id
           INNER JOIN delivery_details ON orders.user_id = delivery_details.user_id
           INNER JOIN users ON orders.user_id = users.user_id
-          WHERE  $user_id = '$user_id'";
+          WHERE  users.user_id = '$user_id'
+          ORDER BY orders.order_id DESC
+          LIMIT 10
+          
+          ";
 
 $result = mysqli_query($db_con, $query);
 

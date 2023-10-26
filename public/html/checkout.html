@@ -27,7 +27,7 @@
       <aside class="sidebar-container">
         <div class="side-content">
           <div class="logo-container">
-            <h1 class="logo" onclick="viewDeliveryDetails()">Oya Chop</h1>
+            <h1 class="logo">Oya Chop</h1>
           </div>
 
           <nav class="navbar">
@@ -162,7 +162,52 @@
               </div>
               <button class="payBtn">Place Order</button>
             </div>
-            <!-- <div id="card-message" class="c-message"></div> -->
+          </div>
+
+          <div class="card-details">
+
+              <div class="atm-card">
+                <div class="testcardhead">
+                  <p class="atm-heading">Test Card</p>
+                  <div class="testamountHead">
+                    <p class="testamount">Amount:</p>
+                    <p class="amountp">N <span class="amount">100000</span></p>
+                  </div>
+                </div>
+                
+                <div class="pin-wrap">
+                  <img class="chip-image" src="../img/sim-card-chip.svg">
+                  <img class="wifi-image" src="../img/wifi-fill.svg">
+                </div>
+                <h2 class="atmNumber">
+                  <span>1</span><span>2</span><span>3</span><span>4</span>
+                  <span>5</span><span>6</span><span>7</span><span>8</span>
+                  <span>5</span><span>6</span><span>7</span><span>8</span>
+                  <span>5</span><span>6</span><span>7</span><span>8</span>
+                </h2>
+                <div class="valid-wrap">
+                  <div class="v-wrap">
+                    <small>Valid <br> Thru</small>
+                    <p>
+                      <span class="atm-month">01</span> /
+                      <span class="atm-year">23</span>
+                    </p>
+                  </div>
+
+                  <div class="v-wrap">
+                    <small>CVV</small>
+                    <p>
+                      <span class="atm-cvv">999</span>
+                    </p>
+                  </div>
+                </div>
+
+                <h2 class="atm-name">John Doe</h2>
+
+                <img class="atm-logo" src="../img/MasterCard_Logo.svg.png" >
+              </div>
+
+              
           </div>
         </div>
 
@@ -177,6 +222,7 @@
           </div>
         </div>
       </div>
+
     </main>
   </section>
 
@@ -184,6 +230,7 @@
   <script src="/public/js/dashboard.js"></script>
   <script src="/public/js/app.js"></script>
   <script>
+    viewCardDetails()
     //function to save/update delivery address
     const submitBtn = document.querySelector('.formBtn');
     submitBtn.addEventListener('click', (event) => {
@@ -232,6 +279,7 @@
       cardDetails.style.display = 'none'
     })
 
+    
   </script>
 </body>
 

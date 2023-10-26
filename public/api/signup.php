@@ -25,7 +25,7 @@ if (!isset($_POST['firstname'], $_POST['lastname'], $_POST['gender'], $_POST['ph
     $card_holder = $firstname . ' ' . $lastname;
     // $first_num = substr(str_shuffle('12345678901234567890'), 10);
     // $sec_num = substr(str_shuffle('098765432123'), 6);
-    $card_number = strval(random_int(10000000000000000, 999999999999999999));
+    $card_number = strval(random_int(1000000000000000, 9999999999999999));
     $expire_month = rand(1,12);
     $expire_year = rand(date('Y'), 2028);
     $cvv = substr(str_shuffle(123456),3);
