@@ -56,7 +56,7 @@ function handleCategorySelection(event) {
 // Render product items
 function renderProductItems(products) {
   if (productsEl) {
-     
+
 
     products.forEach((product) => {
       const productItem = createProductItemMarkup(product);
@@ -115,8 +115,6 @@ function filterProductsByCategory(selectedCategory) {
 }
 
 
-let cart = [];
-
 // Function to display messages ON DASHBORD
 function displayMessage(message, isSuccess) {
   const messageDiv = document.getElementById('message');
@@ -128,6 +126,9 @@ function displayMessage(message, isSuccess) {
     messageDiv.classList.remove('success', 'error');
   }, 4000);
 }
+
+
+let cart = [];
 
 // Add to cart function
 function addToCart(productId) {
@@ -173,16 +174,19 @@ function addToCart(productId) {
 }
 
 
+
 //function to save cart to local storage
 function saveCartToLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  // localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem(`cart_${user_id}`, JSON.stringify(cart))
 }
 
 
 //function to render cart items from the database
-let viewItemsInCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+let viewItemsInCart = localStorage.getItem(`cart_${user_id}`) ? JSON.parse(localStorage.getItem(`cart_${user_id}`)) : [];
+let cartLength = 0;
 
-function renderCart() {
+function renderCart(cartLength) {
   const BASE_URL = 'http://localhost/api/cart.php';
   const user_id = sessionStorage.getItem('user_id');
 
@@ -202,11 +206,21 @@ function renderCart() {
       viewItemsInCart = cartData;
       console.log(viewItemsInCart);
 
+      cartLength = viewItemsInCart.length
+      console.log(cartLength)
+
+      // Call getCartQuantity here, once cartLength is set
+      getCartQuantity(cartLength);
+
+     // Set the cart length in localStorage specific to the user
+    //  localStorage.setItem(`cartLength_${user_id}`, cartLength);
+
       saveCartToLocalStorage();
 
       renderCartItems(viewItemsInCart);
       handleQuantity(viewItemsInCart);
       getTotalQuantity();
+      
 
       updateCartItemsDisplay();
       updateCartTotals();
@@ -215,6 +229,9 @@ function renderCart() {
       console.log(error);
     });
 }
+
+
+
 
 // Create HTML markup for a product item
 function createCartItemMarkup(itemsInCart) {
@@ -243,6 +260,9 @@ const removeItemLinks = document.querySelectorAll('.remove-link');
 removeItemLinks.forEach(removeLink => {
   removeLink.addEventListener('click', handleRemoveItem);
 });
+
+
+
 
 
 
@@ -511,7 +531,7 @@ function renderOrderSummary() {
 
 
 //function to get the total quantity from the backend
-function getTotalQuantity(user_id) {
+function getTotalQuantity() {
   // Store a reference to the current timer
   let timer;
 
@@ -547,16 +567,17 @@ function getTotalQuantity(user_id) {
           .then((data) => {
             console.log(data.total_items);
 
-            // Save the new total Quantity to local storage
-            localStorage.setItem('totalQuantity', data.total_items);
+            // Save the new total Quantity to local storage with a user-specific key
+            localStorage.setItem(`totalQuantity_${user_id}`, data.total_items);
 
 
             // Update each cart quantity element individually
+
             const cartQuantityElements = document.querySelectorAll('.cartQuantity');
             cartQuantityElements.forEach(element => {
               element.textContent = `${data.total_items}`;
             });
-
+            // getCartQuantity()
           })
           .catch((error) => console.error('Error updating cart quantity:', error));
       }, 500);
@@ -565,21 +586,21 @@ function getTotalQuantity(user_id) {
 }
 
 
+function getCartQuantity(cartLength) {
+  // Use the cartLength parameter passed to this function
+  if (isDashboardPage || isProfilePage || isOrderPage || isCartPage || isCheckoutPage || isSupportPage) {
+    const totalQuantityElement = document.querySelectorAll('.cartQuantity');
+    console.log(totalQuantityElement)
 
+    totalQuantityElement.forEach(element => {
+      element.textContent = cartLength;
 
-function getCartQuantity(user_id) {
-  document.addEventListener('DOMContentLoaded', function () {
-    if (isDashboardPage || isProfilePage || isOrderPage || isCartPage || isCheckoutPage || isSupportPage) {
-      const totalQuantityElement = document.querySelectorAll('.cartQuantity')
-      const totalCartQuantity = localStorage.getItem('totalQuantity')
-
-      totalQuantityElement.forEach(element => {
-        element.textContent = `${totalCartQuantity}`
-      })
-    }
-  });
+      // localStorage.getItem(`cartLength_${user_id}`, cartLength);
+    });
+  }
 }
-getCartQuantity(user_id)
+
+
 
 // Render cart product items
 function renderCartItems(viewItemsInCart) {
@@ -899,7 +920,7 @@ function viewDeliveryDetails() {
 
 }
 
-
+//function to render orders on the frontend
 function getOrder() {
   if (isOrderPage) {
     const user_id = sessionStorage.getItem('user_id');
@@ -930,6 +951,11 @@ function getOrder() {
 
         }
 
+        // Add event listener for category selection only on order.html
+        if (isOrderPage) {
+          activeOrderToggle.addEventListener("click", handleCategorySelection);
+        }
+
       })
       .catch(error => {
         console.error('Error:', error);
@@ -942,7 +968,7 @@ function getOrder() {
 // Create HTML markup for a product item
 function createOrderMarkup(order) {
   return `
-  <div class="orderedItem">
+  <div class="orderedItem" data-name="${order.status}">
   <div class="leftDiv">
       <img class="orderImage" src="http://localhost/food_order/images/food/${order.image_name}" alt="">
       <div class="orderDetails">
@@ -958,6 +984,10 @@ function createOrderMarkup(order) {
 </div>
   `;
 }
+
+
+
+
 
 
 function formatCardNumber(cardNumber) {
@@ -985,7 +1015,7 @@ function viewCardDetails() {
       .then(response => response.json())
       .then(data => {
         const atmDetails = data.card_details[0]
-        console.log(atmDetails)
+
 
         //select variables
         const cardHolder = document.querySelector('.atm-name');

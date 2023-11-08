@@ -318,6 +318,7 @@ tr td:nth-child(1) {
   font-size: 20px;
   padding-bottom: 7px;
   white-space: nowrap;
+  letter-spacing: 4px;
 }
 .atmNumber span:nth-child(4n)::after  {
   content: " ";

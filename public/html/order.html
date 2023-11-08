@@ -91,13 +91,13 @@
                 </div>
                 <div class="orderStatusDiv">
                     <button class="orderStatus active" data-name="all">All</button>
-                    <button class="orderStatus" data-name="pending">Pending</button>
-                    <button class="orderStatus" data-name="delivered">Delivered</button>
+                    <button class="orderStatus" data-name="On Delivery">On Delivery</button>
+                    <button class="orderStatus" data-name="Delivered">Delivered</button>
                 </div>
                 <div class="orderItemsWrap">
-                    <div class="orderedItem">
-                        <!-- render order items here -->
-                    </div>
+
+                    <!-- render order items here -->
+
                 </div>
             </div>
 
@@ -105,11 +105,63 @@
         </main>
     </section>
 
-    <!-- Hamburger menu -->
-    <script src="/public/js/dashboard.js"></script>
     <!-- javascript for app functionalities -->
     <script src="/public/js/app.js"></script>
+    <!-- Hamburger menu -->
+    <script src="/public/js/dashboard.js"></script>
+
     <script>
+        // Handle category selection
+        function handleCategorySelection(event) {
+            if (event.target.classList.contains("orderStatus")) {
+                // Get the selected category from the clicked button
+                const selectedCategory = event.target.dataset.name;
+
+                // Highlight the selected category button
+                handleOrderStatus(event)
+
+                // Filter and show/hide products based on the selected category
+                filterOrdersByCategory(selectedCategory);
+            }
+        }
+
+
+        const orderStatus = document.querySelectorAll(".orderStatus");
+
+        function handleOrderStatus(event) {
+
+            const selectedOrderBtn = event.target;
+            if (selectedOrderBtn.classList.contains("orderStatus")) {
+                const activeOrderToggle = document.querySelector(".orderStatus.active");
+                if (activeOrderToggle) {
+                    activeOrderToggle.classList.remove("active");
+                }
+                selectedOrderBtn.classList.add("active");
+            }
+        }
+
+        // Add event listener to orderStatus elements
+        orderStatus.forEach((button) => {
+            button.addEventListener("click", handleCategorySelection);
+        });
+
+        // Filter and show/hide orders based on the selected category
+        function filterOrdersByCategory(selectedCategory) {
+            const orderItems = document.querySelectorAll(".orderedItem");
+
+            orderItems.forEach((item) => {
+                const itemCategory = item.getAttribute("data-name");
+                if (selectedCategory === "all" || selectedCategory === itemCategory) {
+                    item.classList.add("show");
+                    item.classList.remove("hide");
+                } else {
+                    item.classList.add("hide");
+                    item.classList.remove("show");
+                }
+            });
+        }
+
+
         getOrder()
         getCartQuantity()
     </script>
