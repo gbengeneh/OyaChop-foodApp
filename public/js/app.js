@@ -514,7 +514,7 @@ function renderOrderSummary() {
   const cartSubtotalValue = localStorage.getItem('cartSubtotal');
   const cartTaxValue = localStorage.getItem('cartTax');
   const cartTotalValue = localStorage.getItem('cartTotal');
-  const totalCartQuantity = localStorage.getItem('totalQuantity')
+  const totalCartQuantity = localStorage.getItem('totalQuantity');
 
   // Get elements by their IDs on the current page
   const orderSubtotal = document.getElementById('order-subtotal');

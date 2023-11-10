@@ -68,7 +68,7 @@
                 <tr>
                     <td>Price</td>
                     <td>
-                        <b> $ <?php echo $price; ?></b>
+                        <b> N <?php echo $price; ?></b>
                     </td>
                 </tr>
 
