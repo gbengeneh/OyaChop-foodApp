@@ -2,7 +2,8 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Update Order</h1>
+        <h1>Update Order</h1><br><br>
+        <h2 style="color: green;">You can only update the <i style="color: red;"> Status</i> from Here</i></h2>
         <br><br>
 
 
@@ -16,8 +17,13 @@
 
                 //Get all other details based on this id
                 //SQL Query to get the order details
-                $sql = "SELECT * FROM orders,delivery_details,users,tbl_food WHERE order_id=$order_id";
+                $sql = "SELECT * FROM orders
+                INNER JOIN tbl_food ON orders.food_id = tbl_food.id
+                INNER JOIN delivery_details ON orders.user_id = delivery_details.user_id
+                INNER JOIN users ON orders.user_id = users.user_id
+                 WHERE order_id='$id'";
                 //Execute Query
+                // tbl_food.id, tbl_food.title, tbl_food.image_name,tbl_food.price, status,quantity, order_date
                 $res = mysqli_query($conn, $sql);
                 //Count Rows
                 $count = mysqli_num_rows($res);
@@ -27,9 +33,9 @@
                     //Detail Availble
                     $row=mysqli_fetch_assoc($res);
 
-                    $food = $row['food'];
+                    $food = $row['title'];
                     $price = $row['price'];
-                    $qty = $row['qty'];
+                    $qty = $row['quantity'];
                     $status = $row['status'];
                     $customer_name = $row['firstname']. " ". $row['lastname'];
                     $customer_contact = $row['phone_number'];
@@ -69,14 +75,14 @@
                 <tr>
                     <td>Qty</td>
                     <td>
-                        <input type="number" name="qty" value="<?php echo $qty; ?>">
+                        <input type="number" name="qty" value="<?php echo $qty; ?>" >
                     </td>
                 </tr>
 
                 <tr>
                     <td>Status</td>
                     <td>
-                        <select name="status">
+                        <select name="status" style="background-color: green; color:white ">
                             <option <?php if($status=="Ordered"){echo "selected";} ?> value="Ordered">Ordered</option>
                             <option <?php if($status=="On Delivery"){echo "selected";} ?> value="On Delivery">On Delivery</option>
                             <option <?php if($status=="Delivered"){echo "selected";} ?> value="Delivered">Delivered</option>
@@ -130,34 +136,14 @@
             //CHeck whether Update Button is Clicked or Not
             if(isset($_POST['submit']))
             {
-                //echo "Clicked";
-                //Get All the Values from Form
-                // $id = $_POST['id'];
-                // $price = $_POST['price'];
-                // $qty = $_POST['qty'];
-
-                // $total = $price * $qty;
+           
 
                 $status = $_POST['status'];
 
-                // $firstname = $_POST['firstname'];
-                // $lasstname = $_POST['lastname'];
-                // $customer_contact = $_POST['phone_number'];
-                // $customer_email = $_POST['email'];
-                // $customer_address = $_POST['delivery_address'];
+               
 
                 //Update the Values
-                $sql2 = "UPDATE orders SET 
-                    -- qty = $qty,
-                    -- total = $total,
-                    status = '$status'
-                    -- firstname = '$firstname',
-                    --  lastname= '$lastname',                   
-                    -- customer_contact = '$phone_number',
-                    -- customer_email = '$email',
-                    -- customer_address = '$delivery_address'
-                    WHERE order_id=$order_id
-                ";
+                $sql2 = "UPDATE orders SET  status = '$status' WHERE order_id=$id ";
 
                 //Execute the Query
                 $res2 = mysqli_query($conn, $sql2);
@@ -177,6 +163,16 @@
                     header('location:'.SITEURL.'admin/manage-order.php');
                 }
             }
+            // -- qty = $qty,
+            //-- total = $total,
+           // status = '$status'
+           // -- firstname = '$firstname',
+            //--  lastname= '$lastname',                   
+            //-- customer_contact = '$phone_number',
+            //-- customer_email = '$email',
+            //-- customer_address = '$delivery_address'
+            // WHERE order_id=$order_id
+        
         ?>
 
 

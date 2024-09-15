@@ -36,27 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Handle order status selection
-
-const orderStatus = document.querySelectorAll(".orderStatus");
-  
-
-function handleOrderStatus(event) {
-  const selectedOrderBtn = event.target;
-  if (selectedOrderBtn.classList.contains("orderStatus")) {
-    const activeOrderToggle = document.querySelector(".orderStatus.active");
-    if (activeOrderToggle) {
-      activeOrderToggle.classList.remove("active");
-    }
-    selectedOrderBtn.classList.add("active");
-  }
-}
-
-// Add event listener to orderStatus elements
-orderStatus.forEach((button) => {
-  button.addEventListener("click", handleOrderStatus);
-});
-
 //Hide or display profile menu
 
 const user = document.querySelector(".user")

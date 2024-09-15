@@ -56,7 +56,7 @@ function handleCategorySelection(event) {
 // Render product items
 function renderProductItems(products) {
   if (productsEl) {
-    productsEl.innerHTML = "";
+
 
     products.forEach((product) => {
       const productItem = createProductItemMarkup(product);
@@ -115,8 +115,6 @@ function filterProductsByCategory(selectedCategory) {
 }
 
 
-let cart = [];
-
 // Function to display messages ON DASHBORD
 function displayMessage(message, isSuccess) {
   const messageDiv = document.getElementById('message');
@@ -128,6 +126,9 @@ function displayMessage(message, isSuccess) {
     messageDiv.classList.remove('success', 'error');
   }, 4000);
 }
+
+
+let cart = [];
 
 // Add to cart function
 function addToCart(productId) {
@@ -173,16 +174,19 @@ function addToCart(productId) {
 }
 
 
+
 //function to save cart to local storage
 function saveCartToLocalStorage() {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  // localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem(`cart_${user_id}`, JSON.stringify(cart))
 }
 
 
 //function to render cart items from the database
-let viewItemsInCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+let viewItemsInCart = localStorage.getItem(`cart_${user_id}`) ? JSON.parse(localStorage.getItem(`cart_${user_id}`)) : [];
+let cartLength = 0;
 
-function renderCart() {
+function renderCart(cartLength) {
   const BASE_URL = 'http://localhost/api/cart.php';
   const user_id = sessionStorage.getItem('user_id');
 
@@ -202,11 +206,21 @@ function renderCart() {
       viewItemsInCart = cartData;
       console.log(viewItemsInCart);
 
+      cartLength = viewItemsInCart.length
+      console.log(cartLength)
+
+      // Call getCartQuantity here, once cartLength is set
+      getCartQuantity(cartLength);
+
+     // Set the cart length in localStorage specific to the user
+    //  localStorage.setItem(`cartLength_${user_id}`, cartLength);
+
       saveCartToLocalStorage();
 
       renderCartItems(viewItemsInCart);
       handleQuantity(viewItemsInCart);
       getTotalQuantity();
+      
 
       updateCartItemsDisplay();
       updateCartTotals();
@@ -215,6 +229,9 @@ function renderCart() {
       console.log(error);
     });
 }
+
+
+
 
 // Create HTML markup for a product item
 function createCartItemMarkup(itemsInCart) {
@@ -243,6 +260,9 @@ const removeItemLinks = document.querySelectorAll('.remove-link');
 removeItemLinks.forEach(removeLink => {
   removeLink.addEventListener('click', handleRemoveItem);
 });
+
+
+
 
 
 
@@ -494,7 +514,7 @@ function renderOrderSummary() {
   const cartSubtotalValue = localStorage.getItem('cartSubtotal');
   const cartTaxValue = localStorage.getItem('cartTax');
   const cartTotalValue = localStorage.getItem('cartTotal');
-  const totalCartQuantity = localStorage.getItem('totalQuantity')
+  const totalCartQuantity = localStorage.getItem('totalQuantity');
 
   // Get elements by their IDs on the current page
   const orderSubtotal = document.getElementById('order-subtotal');
@@ -511,7 +531,7 @@ function renderOrderSummary() {
 
 
 //function to get the total quantity from the backend
-function getTotalQuantity(user_id) {
+function getTotalQuantity() {
   // Store a reference to the current timer
   let timer;
 
@@ -547,16 +567,17 @@ function getTotalQuantity(user_id) {
           .then((data) => {
             console.log(data.total_items);
 
-            // Save the new total Quantity to local storage
-            localStorage.setItem('totalQuantity', data.total_items);
+            // Save the new total Quantity to local storage with a user-specific key
+            localStorage.setItem(`totalQuantity_${user_id}`, data.total_items);
 
 
             // Update each cart quantity element individually
+
             const cartQuantityElements = document.querySelectorAll('.cartQuantity');
             cartQuantityElements.forEach(element => {
               element.textContent = `${data.total_items}`;
             });
-
+            // getCartQuantity()
           })
           .catch((error) => console.error('Error updating cart quantity:', error));
       }, 500);
@@ -565,21 +586,21 @@ function getTotalQuantity(user_id) {
 }
 
 
+function getCartQuantity(cartLength) {
+  // Use the cartLength parameter passed to this function
+  if (isDashboardPage || isProfilePage || isOrderPage || isCartPage || isCheckoutPage || isSupportPage) {
+    const totalQuantityElement = document.querySelectorAll('.cartQuantity');
+    console.log(totalQuantityElement)
 
+    totalQuantityElement.forEach(element => {
+      element.textContent = cartLength;
 
-function getCartQuantity(user_id) {
-  document.addEventListener('DOMContentLoaded', function () {
-    if (isDashboardPage || isProfilePage || isOrderPage || isCartPage || isCheckoutPage || isSupportPage) {
-      const totalQuantityElement = document.querySelectorAll('.cartQuantity')
-      const totalCartQuantity = localStorage.getItem('totalQuantity')
-
-      totalQuantityElement.forEach(element => {
-        element.textContent = `${totalCartQuantity}`
-      })
-    }
-  });
+      // localStorage.getItem(`cartLength_${user_id}`, cartLength);
+    });
+  }
 }
-getCartQuantity(user_id)
+
+
 
 // Render cart product items
 function renderCartItems(viewItemsInCart) {
@@ -760,8 +781,8 @@ function updateDeliveryAddress() {
       user_id: user_id, // Add the user_id to the request data
       firstname: changeFirstname.value,
       lastname: changeLastName.value,
-      phone_number: changeAddress.value,
-      delivery_address: changePhone.value,
+      phone_number: changePhone.value,
+      delivery_address: changeAddress.value,
       closest_landmark: addLandmark.value,
     };
 
@@ -899,15 +920,8 @@ function viewDeliveryDetails() {
 
 }
 
-
-// // select the user delivery address value from the input
-// const changeFirstname = document.getElementById("firstname");
-// const changeLastName = document.getElementById("lastname");
-// const changeAddress = document.getElementById("address");
-// const changePhone = document.getElementById("phone");
-// const addLandmark = document.getElementById("landmark");
-
-function getOrder(){
+//function to render orders on the frontend
+function getOrder() {
   if (isOrderPage) {
     const user_id = sessionStorage.getItem('user_id');
 
@@ -916,10 +930,109 @@ function getOrder(){
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        user_id: user_id,
+      }),
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // Extract orders from the fetched data
+        let orders = data;
+        console.log(orders)
+        const ordersEl = document.querySelector(".orderItemsWrap");
+        if (ordersEl) {
+          ordersEl.innerHTML = "";
+
+          // Loop through the orders array and render each order
+          orders.forEach(order => {
+            const orderItem = createOrderMarkup(order);
+            ordersEl.insertAdjacentHTML("beforeend", orderItem)
+          });
+
+        }
+
+        // Add event listener for category selection only on order.html
+        if (isOrderPage) {
+          activeOrderToggle.addEventListener("click", handleCategorySelection);
+        }
+
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+}
+
+
+// Create HTML markup for a product item
+function createOrderMarkup(order) {
+  return `
+  <div class="orderedItem" data-name="${order.status}">
+  <div class="leftDiv">
+      <img class="orderImage" src="http://localhost/food_order/images/food/${order.image_name}" alt="">
+      <div class="orderDetails">
+          <h2 class="orderCode">Order #00${order.food_id}</h2>
+          <p class="orderTitle">${order.title}</p>
+          <p class="orderUpdate">Status: <span>${order.status}</span></p>
+      </div>
+  </div>
+  <div class="rightDiv">
+      <small class="orderTime">${order.time_diff}</small>
+      <h3 class="orderPrice">N ${order.total}</h3>
+  </div>
+</div>
+  `;
+}
+
+
+
+
+
+
+function formatCardNumber(cardNumber) {
+  // Remove any existing spaces or non-numeric characters
+  cardNumber = cardNumber.replace(/\D/g, '');
+
+  // Insert a space after every 4 digits
+  return cardNumber.replace(/(\d{4})/g, '$1 ');
+}
+
+
+function viewCardDetails() {
+  if (isCheckoutPage) {
+    const user_id = sessionStorage.getItem('user_id');
+
+    fetch(`http://localhost/api/get_card_details.php?user_id=${user_id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user_id,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        const atmDetails = data.card_details[0]
+
+
+        //select variables
+        const cardHolder = document.querySelector('.atm-name');
+        const cardNumberValue = formatCardNumber(atmDetails.card_number);
+        const cardNumber = document.querySelector('.atmNumber');
+        const expiryMonth = document.querySelector('.atm-month');
+        const expiryYear = document.querySelector('.atm-year');
+        const cardCvv = document.querySelector('.atm-cvv');
+        const cardAmount = document.querySelector('.amount');
+
+        //equate variable to data from backend
+        cardHolder.textContent = atmDetails.card_holder
+        cardNumber.textContent = cardNumberValue
+        expiryMonth.textContent = atmDetails.expire_month
+        expiryYear.textContent = atmDetails.expire_year
+        cardCvv.textContent = atmDetails.cvv
+        cardAmount.textContent = atmDetails.amount
       })
       .catch(error => {
         console.error('Error:', error);

@@ -27,7 +27,7 @@
             <aside class="sidebar-container">
                 <div class="side-content">
                     <div class="logo-container">
-                        <h1 class="logo" onclick="getOrder()">Oya Chop</h1>
+                        <h1 class="logo">Oya Chop</h1>
                     </div>
 
                     <nav class="navbar">
@@ -47,13 +47,13 @@
                             <li class="nav-item">
                                 <div class="nav-item-div">
                                     <img src="../img/dashboard/order.svg" class="nav-item-img" alt="">
-                                    <a href="order.html">Orders<span class="orderQuantity">0</span></a>
+                                    <a href="order.html">Orders</a>
                                 </div>
                             </li>
                             <li class="nav-item">
                                 <div class="nav-item-div">
                                     <img src="../img/dashboard/cart.svg" class="nav-item-img" alt="">
-                                    <a href="cart.html">Your Cart<span class="cartQuantity">0</span></a>
+                                    <a href="cart.html">Your Cart</a>
                                 </div>
                             </li>
                         </ul>
@@ -91,24 +91,13 @@
                 </div>
                 <div class="orderStatusDiv">
                     <button class="orderStatus active" data-name="all">All</button>
-                    <button class="orderStatus" data-name="pending">Pending</button>
-                    <button class="orderStatus" data-name="delivered">Delivered</button>
+                    <button class="orderStatus" data-name="On Delivery">On Delivery</button>
+                    <button class="orderStatus" data-name="Delivered">Delivered</button>
                 </div>
                 <div class="orderItemsWrap">
-                    <div class="orderedItem">
-                        <div class="leftDiv">
-                            <img class="orderImage" src="/public/img/foodItems/efo riro with garri.jpg" alt="">
-                            <div class="orderDetails">
-                                <h2 class="orderCode">Order #0001</h2>
-                                <p class="orderTitle">Eba with Efo Riro</p>
-                                <p class="orderUpdate">Status: <span>COMPLETED</span></p>
-                            </div>
-                        </div>
-                        <div class="rightDiv">
-                            <small class="orderTime">10 mins ago</small>
-                            <h3 class="orderPrice">N 1200</h3>
-                        </div>
-                    </div>
+
+                    <!-- render order items here -->
+
                 </div>
             </div>
 
@@ -116,34 +105,64 @@
         </main>
     </section>
 
-    <!-- Hamburger menu -->
-    <script src="/public/js/dashboard.js"></script>
     <!-- javascript for app functionalities -->
     <script src="/public/js/app.js"></script>
+    <!-- Hamburger menu -->
+    <script src="/public/js/dashboard.js"></script>
+
     <script>
-        // function getOrder() {
+        // Handle category selection
+        function handleCategorySelection(event) {
+            if (event.target.classList.contains("orderStatus")) {
+                // Get the selected category from the clicked button
+                const selectedCategory = event.target.dataset.name;
 
-        //     const user_id = sessionStorage.getItem('user_id');
+                // Highlight the selected category button
+                handleOrderStatus(event)
 
-        //     fetch("http://localhost/api/order.php", {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({
-        //             user_id: user_id
-        //         }),
-        //     })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log(data);
-        //         })
-        //         .catch(error => {
-        //             console.error('Error:', error);
-        //         });
-        // }
-        // getOrder()
-        // getCartQuantity()
+                // Filter and show/hide products based on the selected category
+                filterOrdersByCategory(selectedCategory);
+            }
+        }
+
+
+        const orderStatus = document.querySelectorAll(".orderStatus");
+
+        function handleOrderStatus(event) {
+
+            const selectedOrderBtn = event.target;
+            if (selectedOrderBtn.classList.contains("orderStatus")) {
+                const activeOrderToggle = document.querySelector(".orderStatus.active");
+                if (activeOrderToggle) {
+                    activeOrderToggle.classList.remove("active");
+                }
+                selectedOrderBtn.classList.add("active");
+            }
+        }
+
+        // Add event listener to orderStatus elements
+        orderStatus.forEach((button) => {
+            button.addEventListener("click", handleCategorySelection);
+        });
+
+        // Filter and show/hide orders based on the selected category
+        function filterOrdersByCategory(selectedCategory) {
+            const orderItems = document.querySelectorAll(".orderedItem");
+
+            orderItems.forEach((item) => {
+                const itemCategory = item.getAttribute("data-name");
+                if (selectedCategory === "all" || selectedCategory === itemCategory) {
+                    item.classList.add("show");
+                    item.classList.remove("hide");
+                } else {
+                    item.classList.add("hide");
+                    item.classList.remove("show");
+                }
+            });
+        }
+
+
+        getOrder()
         getCartQuantity()
     </script>
 

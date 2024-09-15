@@ -260,6 +260,111 @@ tr td:nth-child(1) {
   opacity: 1;
 }
 
+.card-details{
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.atm-card{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,121,9,1) 0%, rgba(32,112,9,0.9500175070028011) 20%, rgba(49,104,9,1) 47%, rgba(142,255,0,1) 72%, rgba(71,94,10,0.7763480392156863) 99%);
+  width: 95%;
+  height: 250px;
+  margin: 1px auto;
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+
+.testcardhead{
+  display: flex;
+  gap: 50px;
+}
+.atm-heading{
+  color: #fff;
+}
+.testamountHead{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.testamount{
+  color: #acaaaa;
+  font-weight: 600;
+  font-size: 11px;
+}
+.amount, .amountp{
+  color: #fff;
+  font-weight: 600;
+}
+
+
+
+.chip-image{
+  width: 50px;
+}
+.wifi-image{
+  width: 30px;
+}
+.pin-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.atmNumber{
+  color: #fff;
+  font-size: 20px;
+  padding-bottom: 7px;
+  white-space: nowrap;
+  letter-spacing: 4px;
+}
+.atmNumber span:nth-child(4n)::after  {
+  content: " ";
+}
+/* .atmNumber span{
+  padding: 1px 6px;
+} */
+.valid-wrap{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 7px;
+}
+
+.v-wrap small{
+  line-height: 1;
+  color: #acaaaa;
+  font-size: 10px;
+  margin-left: 10px;
+}
+.v-wrap p{
+  line-height: 1;
+  color: #fff;
+}
+
+.v-wrap{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.atm-name{
+  color: #fff;
+  font-size: 22px;
+}
+.atm-logo{
+  width: 70px;
+  float: right;
+}
+
+
+
+
+
+
 @media(max-width:550px) {
   .checkout-page {
     flex-direction: column;
